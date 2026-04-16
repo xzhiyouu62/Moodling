@@ -10,6 +10,7 @@ import logging
 import google.genai as genai
 from dotenv import load_dotenv
 
+# Vercel sets env vars directly, but this helps local dev
 load_dotenv()
 
 app = Flask(__name__,
@@ -55,29 +56,38 @@ class SongRecommendationEngine:
 
 class AIExplainer:
     def __init__(self):
+        # Prefer GOOGLE_API_KEY from environment
         self.api_key = os.getenv('GOOGLE_API_KEY')
         if self.api_key:
-            self.client = genai.Client(api_key=self.api_key)
+            try:
+                self.client = genai.Client(api_key=self.api_key)
+                logger.info("Gemini Client initialized.")
+            except Exception as e:
+                logger.error(f"Failed to init Gemini: {e}")
+                self.client = None
         else:
             self.client = None
+            logger.warning("No GOOGLE_API_KEY found.")
 
     def generate(self, state, songs):
         explanations = []
         for i, song in enumerate(songs, 1):
-            prompt = f"Explain in Traditional Chinese (80 words) why '{song['title']}' by {song['artist']} suits a person with mood {state.get('mood')}/10, stress {state.get('stress')}/10, and fatigue {state.get('fatigue')}/10. Keep it warm and professional."
+            prompt = f"你是一位名叫 Moodling 的音樂小精靈。請用繁體中文（約80字）溫暖地解釋為什麼這首由 {song['artist']} 演唱的 '{song['title']}' 適合目前心情 {state.get('mood')}/10、壓力 {state.get('stress')}/10 的用戶。語氣要像好朋友。"
             
-            try:
-                if self.client:
+            text = ""
+            if self.client:
+                try:
+                    # Using gemini-1.5-flash for maximum stability
                     resp = self.client.models.generate_content(
-                        model='models/gemma-3-1b-it',
-                        contents=[{'parts': [{'text': prompt}]}],
-                        config={'max_output_tokens': 500}
+                        model='gemini-1.5-flash',
+                        contents=[{'parts': [{'text': prompt}]}]
                     )
-                    text = resp.candidates[0].content.parts[0].text.strip()
-                else:
-                    text = "Moodling thinks this is a great match for your vibe!"
-            except:
-                text = "Moodling loves this choice for you."
+                    text = resp.text.strip()
+                except Exception as e:
+                    logger.error(f"AI generation failed: {e}")
+                    text = f"這首歌 '{song['title']}' 的節奏非常適合你現在的狀態，希望 Moodling 挑選的音樂能帶給你力量！"
+            else:
+                text = f"Moodling 覺得這首 {song['artist']} 的歌正符合你現在的氛圍，聽聽看吧！"
 
             explanations.append({
                 'song_title': song['title'],
@@ -115,4 +125,5 @@ def stats():
     return jsonify({'song_count': len(songs_data), 'artist_count': 15, 'avg_energy': 65.5})
 
 if __name__ == '__main__':
+    # Default to 5001 for local, but Vercel uses its own
     app.run(debug=True, host='0.0.0.0', port=5001)
