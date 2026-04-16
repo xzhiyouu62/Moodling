@@ -72,18 +72,29 @@ class AIExplainer:
     def generate(self, state, songs):
         explanations = []
         for i, song in enumerate(songs, 1):
-            # 提供更多細節讓 AI 發揮，避免公式化
+            # 整合更深度的數據供 AI 分析
             tags = ", ".join(song.get('tags', []))
+            energy = song.get('energy', 50)
+            valence = song.get('valence', 50)
+            mood = state.get('mood', 5)
+            stress = state.get('stress', 5)
+            fatigue = state.get('fatigue', 5)
+
             prompt = f"""
-            你是一位很有靈性的音樂小精靈 Moodling。現在用戶的心情是 {state.get('mood')}/10，壓力是 {state.get('stress')}/10。
-            我想推薦他聽 {song['artist']} 的《{song['title']}》（標籤：{tags}）。
+            你是一位專業的音樂策展小精靈 Moodling，擅長從音樂心理學角度解釋選曲邏輯。
             
-            請像個懂音樂的知心好友，隨性且溫暖地聊聊這首歌。
+            用戶狀態：心情 {mood}/10, 壓力 {stress}/10, 疲勞 {fatigue}/10。
+            推薦歌曲：{song['artist']} - 《{song['title']}》
+            歌曲特徵：能量指數 {energy}/100, 情感愉悅度 {valence}/100, 風格標籤 [{tags}]。
+            
+            任務：請撰寫一段 80-120 字的「推薦深度解析」。
+            
             要求：
-            1. 絕對不要使用「這首歌非常適合你現在的狀態」或「希望帶給你力量」這種老套的公式。
-            2. 請根據歌曲的氛圍（如：{tags}）描述一種具體的畫面感或情感連結。
-            3. 字數大約 60-100 字，語氣要自然，不要像機器人。
-            4. 每次的開頭都要有變化。
+            1. 邏輯對接：具體說明為什麼這首歌的 [能量/愉悅度/風格標籤] 能對應 [用戶的心情/壓力/疲勞]。
+            2. 音樂性描述：描述歌曲的聽感（例如：是跳動的貝斯、清冷的鋼琴、還是層層遞進的人聲）如何影響用戶目前的心理。
+            3. 禁止敷衍：絕對不要說「這首歌很適合你」或「希望帶給你力量」。
+            4. 語氣：專業、富有洞察力、且帶有靈性，像是一位資深的電台主持人。
+            5. 直接開始解析，不要任何客套的開場白（如：哎呀、你好）。
             """
             
             text = ""
@@ -93,22 +104,17 @@ class AIExplainer:
                         model='gemini-2.5-flash',
                         contents=[{'parts': [{'text': prompt}]}],
                         config={
-                            'temperature': 0.9, # 增加創意與變化
-                            'top_p': 0.95,
-                            'max_output_tokens': 400
+                            'temperature': 0.7, 
+                            'top_p': 0.9,
+                            'max_output_tokens': 600
                         }
                     )
                     text = resp.text.strip()
                 except Exception as e:
                     logger.error(f"AI generation failed: {e}")
-                    fallbacks = [
-                        f"這首《{song['title']}》的旋律剛好能接住你現在的情緒，聽聽看吧。",
-                        f"Moodling 覺得 {song['artist']} 的聲音在這種時候聽起來特別溫柔，分享給你。",
-                        f"閉上眼聽這首《{song['title']}》，或許能讓你的心情稍微透透氣。"
-                    ]
-                    text = random.choice(fallbacks)
+                    text = f"選曲解析：考慮到您的壓力指數({stress}/10)，《{song['title']}》的 {tags} 節奏能與您的心跳共振，透過其 {energy} 水平的能量緩解心理負荷。"
             else:
-                text = f"這首 {song['artist']} 的作品正帶著一種獨特的氛圍，希望能與你產生共鳴。"
+                text = f"選曲分析：基於您的數據，這首歌的 {tags} 氛圍正對接您當下的心理需求。"
 
             explanations.append({
                 'song_title': song['title'],
