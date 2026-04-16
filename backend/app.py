@@ -72,22 +72,43 @@ class AIExplainer:
     def generate(self, state, songs):
         explanations = []
         for i, song in enumerate(songs, 1):
-            prompt = f"你是一位名叫 Moodling 的音樂小精靈。請用繁體中文（約80字）溫暖地解釋為什麼這首由 {song['artist']} 演唱的 '{song['title']}' 適合目前心情 {state.get('mood')}/10、壓力 {state.get('stress')}/10 的用戶。語氣要像好朋友。"
+            # 提供更多細節讓 AI 發揮，避免公式化
+            tags = ", ".join(song.get('tags', []))
+            prompt = f"""
+            你是一位很有靈性的音樂小精靈 Moodling。現在用戶的心情是 {state.get('mood')}/10，壓力是 {state.get('stress')}/10。
+            我想推薦他聽 {song['artist']} 的《{song['title']}》（標籤：{tags}）。
+            
+            請像個懂音樂的知心好友，隨性且溫暖地聊聊這首歌。
+            要求：
+            1. 絕對不要使用「這首歌非常適合你現在的狀態」或「希望帶給你力量」這種老套的公式。
+            2. 請根據歌曲的氛圍（如：{tags}）描述一種具體的畫面感或情感連結。
+            3. 字數大約 60-100 字，語氣要自然，不要像機器人。
+            4. 每次的開頭都要有變化。
+            """
             
             text = ""
             if self.client:
                 try:
-                    # Using the latest gemini-2.5-flash
                     resp = self.client.models.generate_content(
                         model='gemini-2.5-flash',
-                        contents=[{'parts': [{'text': prompt}]}]
+                        contents=[{'parts': [{'text': prompt}]}],
+                        config={
+                            'temperature': 0.9, # 增加創意與變化
+                            'top_p': 0.95,
+                            'max_output_tokens': 400
+                        }
                     )
                     text = resp.text.strip()
                 except Exception as e:
                     logger.error(f"AI generation failed: {e}")
-                    text = f"這首歌 '{song['title']}' 的節奏非常適合你現在的狀態，希望 Moodling 挑選的音樂能帶給你力量！"
+                    fallbacks = [
+                        f"這首《{song['title']}》的旋律剛好能接住你現在的情緒，聽聽看吧。",
+                        f"Moodling 覺得 {song['artist']} 的聲音在這種時候聽起來特別溫柔，分享給你。",
+                        f"閉上眼聽這首《{song['title']}》，或許能讓你的心情稍微透透氣。"
+                    ]
+                    text = random.choice(fallbacks)
             else:
-                text = f"Moodling 覺得這首 {song['artist']} 的歌正符合你現在的氛圍，聽聽看吧！"
+                text = f"這首 {song['artist']} 的作品正帶著一種獨特的氛圍，希望能與你產生共鳴。"
 
             explanations.append({
                 'song_title': song['title'],
