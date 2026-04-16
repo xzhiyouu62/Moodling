@@ -1,55 +1,561 @@
 [
   {
-    "title": "Supernova",
-    "artist": "aespa",
-    "album": "Armageddon",
-    "year": 2024,
-    "genre": "Dance, Electronic",
-    "energy": 92,
-    "valence": 65,
-    "tempo": 120,
-    "tags": ["futuristic", "energetic", "catchy", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=phuiiNCxRMg",
-    "description": "充滿未來感與強勁節拍的電子舞曲，極具洗腦魔力"
+    "title": "Spring Day",
+    "artist": "BTS",
+    "album": "You Never Walk Alone",
+    "year": 2017,
+    "genre": "Pop, R&B",
+    "energy": 45,
+    "valence": 35,
+    "tempo": 80,
+    "tags": [
+      "melancholic",
+      "emotional",
+      "relaxing",
+      "introspective"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=xEeFrLSkMm8",
+    "description": "一首充滿思念與情感的慢歌，適合心情低落時聆聽"
   },
   {
-    "title": "Magnetic",
-    "artist": "ILLIT",
-    "album": "SUPER REAL ME",
-    "year": 2024,
-    "genre": "Pop, Dance",
-    "energy": 75,
+    "title": "Dynamite",
+    "artist": "BTS",
+    "album": "Dynamite",
+    "year": 2020,
+    "genre": "Pop, Funk",
+    "energy": 85,
+    "valence": 90,
+    "tempo": 114,
+    "tags": [
+      "energetic",
+      "happy",
+      "uplifting",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=gdZLi9oWNZg",
+    "description": "充滿活力的快樂歌曲，適合提振精神"
+  },
+  {
+    "title": "Through the Night",
+    "artist": "IU",
+    "album": "Palette",
+    "year": 2017,
+    "genre": "Indie Pop",
+    "energy": 30,
+    "valence": 70,
+    "tempo": 75,
+    "tags": [
+      "chill",
+      "romantic",
+      "soft",
+      "relaxing"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=BzYnNdJhZQw",
+    "description": "溫柔舒緩的歌曲，適合放鬆時光"
+  },
+  {
+    "title": "Kill This Love",
+    "artist": "BLACKPINK",
+    "album": "Kill This Love",
+    "year": 2019,
+    "genre": "Hip Hop, Electronic",
+    "energy": 95,
+    "valence": 60,
+    "tempo": 128,
+    "tags": [
+      "powerful",
+      "energetic",
+      "intense",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=2S24-y0Ij3Y",
+    "description": "強烈有力的歌曲，適合需要動力時聆聽"
+  },
+  {
+    "title": "Eight",
+    "artist": "IU ft. Suga",
+    "album": "Eight",
+    "year": 2020,
+    "genre": "R&B, Hip Hop",
+    "energy": 40,
+    "valence": 45,
+    "tempo": 85,
+    "tags": [
+      "melancholic",
+      "introspective",
+      "emotional",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=TgOu00Mf3kI",
+    "description": "帶有淡淡憂鬱的R&B歌曲"
+  },
+  {
+    "title": "Psycho",
+    "artist": "Red Velvet",
+    "album": "The ReVe Festival Finale",
+    "year": 2019,
+    "genre": "R&B, Pop",
+    "energy": 55,
+    "valence": 65,
+    "tempo": 95,
+    "tags": [
+      "smooth",
+      "dreamy",
+      "romantic",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=uR8Mrt1IpXg",
+    "description": "夢幻柔順的R&B歌曲，適合放鬆心情"
+  },
+  {
+    "title": "WANNABE",
+    "artist": "ITZY",
+    "album": "IT'z ME",
+    "year": 2020,
+    "genre": "Teen Pop, Hip Hop",
+    "energy": 80,
     "valence": 85,
-    "tempo": 131,
-    "tags": ["cute", "upbeat", "catchy", "fresh"],
-    "youtube_url": "https://www.youtube.com/watch?v=Vk5-c_v4gMU",
-    "description": "旋律輕快可愛，充滿青春活力的洗腦神曲"
+    "tempo": 120,
+    "tags": [
+      "energetic",
+      "empowering",
+      "confident",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=fE2h3lGlOsk",
+    "description": "充滿自信與活力的歌曲"
+  },
+  {
+    "title": "Breath",
+    "artist": "Lee Hi",
+    "album": "Seoulite",
+    "year": 2016,
+    "genre": "R&B, Soul",
+    "energy": 25,
+    "valence": 40,
+    "tempo": 70,
+    "tags": [
+      "relaxing",
+      "soothing",
+      "emotional",
+      "calm"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=iFoqGyWhMws",
+    "description": "非常舒緩的歌曲，有助於冥想與放鬆"
+  },
+  {
+    "title": "God's Menu",
+    "artist": "Stray Kids",
+    "album": "GO LIVE",
+    "year": 2020,
+    "genre": "Hip Hop, Electronic",
+    "energy": 90,
+    "valence": 75,
+    "tempo": 130,
+    "tags": [
+      "intense",
+      "powerful",
+      "energetic",
+      "motivating"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=TQTlCHxyuu8",
+    "description": "強勁有力的歌曲，適合運動或需要動力時"
+  },
+  {
+    "title": "Blueming",
+    "artist": "IU",
+    "album": "Love poem",
+    "year": 2019,
+    "genre": "Indie Pop",
+    "energy": 50,
+    "valence": 75,
+    "tempo": 88,
+    "tags": [
+      "sweet",
+      "romantic",
+      "gentle",
+      "happy"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=D1PvIWdJ8xo",
+    "description": "甜美溫暖的歌曲，適合好心情時聆聽"
+  },
+  {
+    "title": "SOLO",
+    "artist": "JENNIE",
+    "album": "SOLO",
+    "year": 2018,
+    "genre": "Hip Hop, Pop",
+    "energy": 75,
+    "valence": 70,
+    "tempo": 110,
+    "tags": [
+      "confident",
+      "empowering",
+      "stylish",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=b73BI9eUkjM",
+    "description": "展現自信魅力的歌曲"
+  },
+  {
+    "title": "You, Clouds, Rain",
+    "artist": "Heize",
+    "album": "You, Clouds, Rain",
+    "year": 2017,
+    "genre": "R&B, Hip Hop",
+    "energy": 35,
+    "valence": 30,
+    "tempo": 75,
+    "tags": [
+      "melancholic",
+      "rainy",
+      "emotional",
+      "introspective"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=afxLaQiLu-o",
+    "description": "適合雨天聆聽的憂鬱歌曲"
+  },
+  {
+    "title": "What Is Love?",
+    "artist": "TWICE",
+    "album": "What Is Love?",
+    "year": 2018,
+    "genre": "Pop, Electronic",
+    "energy": 70,
+    "valence": 85,
+    "tempo": 105,
+    "tags": [
+      "cute",
+      "upbeat",
+      "happy",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=i0p1bmr0EmE",
+    "description": "可愛活潑的歌曲，適合開心時刻"
+  },
+  {
+    "title": "ON",
+    "artist": "BTS",
+    "album": "Map of the Soul: 7",
+    "year": 2020,
+    "genre": "Hip Hop, Rock",
+    "energy": 88,
+    "valence": 65,
+    "tempo": 125,
+    "tags": [
+      "powerful",
+      "motivating",
+      "intense",
+      "epic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=gwMa6gpoE9I",
+    "description": "史詩般的激勵歌曲"
+  },
+  {
+    "title": "Stay Tonight",
+    "artist": "Chungha",
+    "album": "Querencia",
+    "year": 2021,
+    "genre": "R&B, Pop",
+    "energy": 45,
+    "valence": 60,
+    "tempo": 90,
+    "tags": [
+      "romantic",
+      "dreamy",
+      "chill",
+      "smooth"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=YPFIh0dfYfw",
+    "description": "浪漫夢幻的R&B歌曲"
+  },
+  {
+    "title": "Next Level",
+    "artist": "aespa",
+    "album": "Next Level",
+    "year": 2021,
+    "genre": "Hip Hop, Electronic",
+    "energy": 85,
+    "valence": 75,
+    "tempo": 130,
+    "tags": [
+      "futuristic",
+      "energetic",
+      "powerful",
+      "innovative"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=4TWR90KJl84",
+    "description": "未來感十足的強勁歌曲"
+  },
+  {
+    "title": "Bad Boy",
+    "artist": "Red Velvet",
+    "album": "The Perfect Red Velvet",
+    "year": 2018,
+    "genre": "R&B, Hip Hop",
+    "energy": 60,
+    "valence": 55,
+    "tempo": 100,
+    "tags": [
+      "smooth",
+      "sultry",
+      "confident",
+      "groovy"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=J_CFBjAyPWE",
+    "description": "性感自信的R&B歌曲"
+  },
+  {
+    "title": "Palette",
+    "artist": "IU ft. G-Dragon",
+    "album": "Palette",
+    "year": 2017,
+    "genre": "R&B, Hip Hop",
+    "energy": 55,
+    "valence": 70,
+    "tempo": 95,
+    "tags": [
+      "mature",
+      "sophisticated",
+      "chill",
+      "artistic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=d9IxdwEFk1c",
+    "description": "成熟有品味的歌曲"
+  },
+  {
+    "title": "Love Scenario",
+    "artist": "iKON",
+    "album": "Return",
+    "year": 2018,
+    "genre": "Pop, Hip Hop",
+    "energy": 65,
+    "valence": 80,
+    "tempo": 100,
+    "tags": [
+      "catchy",
+      "upbeat",
+      "positive",
+      "feel-good"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=vecSVX1QYbQ",
+    "description": "朗朗上口的正能量歌曲"
+  },
+  {
+    "title": "Hype Boy",
+    "artist": "NewJeans",
+    "album": "NewJeans 1st EP",
+    "year": 2022,
+    "genre": "Pop, R&B",
+    "energy": 75,
+    "valence": 88,
+    "tempo": 118,
+    "tags": [
+      "upbeat",
+      "fresh",
+      "youthful",
+      "catchy"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=MiCTOxjwBE8",
+    "description": "清新活潑的青春感歌曲，節奏感強"
+  },
+  {
+    "title": "Attention",
+    "artist": "NewJeans",
+    "album": "NewJeans 1st EP",
+    "year": 2022,
+    "genre": "R&B, Pop",
+    "energy": 55,
+    "valence": 72,
+    "tempo": 90,
+    "tags": [
+      "cool",
+      "smooth",
+      "chill",
+      "stylish"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=MDnmKFLiLpw",
+    "description": "帶有獨特韻味的清爽R&B，展現NewJeans獨特風格"
+  },
+  {
+    "title": "OMG",
+    "artist": "NewJeans",
+    "album": "OMG",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 70,
+    "valence": 80,
+    "tempo": 108,
+    "tags": [
+      "playful",
+      "catchy",
+      "upbeat",
+      "fresh"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=e9gPmG1CtDA",
+    "description": "充滿活力與趣味的流行歌曲"
   },
   {
     "title": "Super Shy",
     "artist": "NewJeans",
     "album": "Get Up",
     "year": 2023,
-    "genre": "Jersey Club, Pop",
-    "energy": 80,
-    "valence": 90,
-    "tempo": 150,
-    "tags": ["trendy", "upbeat", "bouncy", "fresh"],
+    "genre": "Pop, R&B",
+    "energy": 65,
+    "valence": 82,
+    "tempo": 105,
+    "tags": [
+      "cute",
+      "sweet",
+      "romantic",
+      "upbeat"
+    ],
     "youtube_url": "https://www.youtube.com/watch?v=ArmDp-zijuc",
-    "description": "帶有 Jersey Club 節奏的輕快舞曲，讓人忍不住想跟著跳舞"
+    "description": "甜蜜可愛帶點害羞的流行歌曲"
   },
   {
-    "title": "Ditto",
+    "title": "ETA",
     "artist": "NewJeans",
-    "album": "OMG",
+    "album": "Get Up",
+    "year": 2023,
+    "genre": "Pop, R&B",
+    "energy": 72,
+    "valence": 75,
+    "tempo": 112,
+    "tags": [
+      "confident",
+      "fun",
+      "groove",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=eB_KFBdGZBQ",
+    "description": "帶有律動感的自信流行歌曲"
+  },
+  {
+    "title": "Savage",
+    "artist": "aespa",
+    "album": "Savage",
+    "year": 2021,
+    "genre": "Hip Hop, Electronic",
+    "energy": 88,
+    "valence": 70,
+    "tempo": 135,
+    "tags": [
+      "intense",
+      "futuristic",
+      "powerful",
+      "innovative"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=WMmJygFFRlM",
+    "description": "充滿未來感與衝擊力的電子嘻哈歌曲"
+  },
+  {
+    "title": "Spicy",
+    "artist": "aespa",
+    "album": "My World",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 72,
+    "tempo": 122,
+    "tags": [
+      "energetic",
+      "fierce",
+      "empowering",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=_57qBPfcVBM",
+    "description": "充滿力量與魅力的強勢舞曲"
+  },
+  {
+    "title": "Supernova",
+    "artist": "aespa",
+    "album": "Armageddon",
+    "year": 2024,
+    "genre": "Electronic, Pop",
+    "energy": 90,
+    "valence": 68,
+    "tempo": 132,
+    "tags": [
+      "intense",
+      "futuristic",
+      "powerful",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=phuiiNCxRMg",
+    "description": "震撼人心的未來感電音，2024年代表作之一"
+  },
+  {
+    "title": "Whiplash",
+    "artist": "aespa",
+    "album": "Whiplash",
+    "year": 2024,
+    "genre": "Electronic, Hip Hop",
+    "energy": 87,
+    "valence": 65,
+    "tempo": 128,
+    "tags": [
+      "fierce",
+      "edgy",
+      "intense",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=lx_yGHNFSS8",
+    "description": "充滿衝擊感的強悍電音嘻哈歌曲"
+  },
+  {
+    "title": "ELEVEN",
+    "artist": "IVE",
+    "album": "ELEVEN",
+    "year": 2021,
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 82,
+    "tempo": 115,
+    "tags": [
+      "uplifting",
+      "catchy",
+      "confident",
+      "fresh"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=ufJJBxJsMhA",
+    "description": "IVE出道曲，充滿自信與光芒的流行歌曲"
+  },
+  {
+    "title": "Love Dive",
+    "artist": "IVE",
+    "album": "LOVE DIVE",
     "year": 2022,
-    "genre": "Baltimore Club, Pop",
-    "energy": 65,
-    "valence": 50,
-    "tempo": 134,
-    "tags": ["nostalgic", "emotional", "trendy", "smooth"],
-    "youtube_url": "https://www.youtube.com/watch?v=pSUydWEqKwE",
-    "description": "充滿懷舊氛圍與冬日溫暖氣息的柔和舞曲"
+    "genre": "Pop, Electronic",
+    "energy": 72,
+    "valence": 76,
+    "tempo": 108,
+    "tags": [
+      "elegant",
+      "confident",
+      "catchy",
+      "sophisticated"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=RSOZtBVVAXM",
+    "description": "優雅自信的流行歌曲，充滿迷人氣質"
+  },
+  {
+    "title": "After Like",
+    "artist": "IVE",
+    "album": "After Like",
+    "year": 2022,
+    "genre": "Pop, Disco",
+    "energy": 80,
+    "valence": 85,
+    "tempo": 120,
+    "tags": [
+      "disco",
+      "upbeat",
+      "retro",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=F4-SxcCO3r0",
+    "description": "融合復古Disco風格的活潑舞曲"
   },
   {
     "title": "I AM",
@@ -57,727 +563,341 @@
     "album": "I've IVE",
     "year": 2023,
     "genre": "Pop, Electronic",
-    "energy": 88,
-    "valence": 75,
-    "tempo": 124,
-    "tags": ["confident", "empowering", "glamorous", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=6ZUIwj3FgCE",
-    "description": "展現強大自信與華麗高音的振奮歌曲"
-  },
-  {
-    "title": "LOVE DIVE",
-    "artist": "IVE",
-    "album": "LOVE DIVE",
-    "year": 2022,
-    "genre": "Dark Pop, Electronic",
-    "energy": 70,
-    "valence": 60,
-    "tempo": 118,
-    "tags": ["sultry", "elegant", "catchy", "mysterious"],
-    "youtube_url": "https://www.youtube.com/watch?v=Y8JFxS1HlDo",
-    "description": "帶有神祕色彩與優雅氛圍的流行舞曲"
-  },
-  {
-    "title": "Perfect Night",
-    "artist": "LE SSERAFIM",
-    "album": "Perfect Night",
-    "year": 2023,
-    "genre": "R&B, Pop",
-    "energy": 60,
+    "energy": 75,
     "valence": 80,
-    "tempo": 108,
-    "tags": ["chill", "smooth", "happy", "trendy"],
-    "youtube_url": "https://www.youtube.com/watch?v=hLvWy2b857I",
-    "description": "適合與朋友在夜晚兜風或派對時聆聽的輕鬆歌曲"
+    "tempo": 118,
+    "tags": [
+      "empowering",
+      "confident",
+      "uplifting",
+      "anthemic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=6ZUIwj3FgUY",
+    "description": "充滿力量感的自我宣言歌曲"
+  },
+  {
+    "title": "Baddie",
+    "artist": "IVE",
+    "album": "I've Mine",
+    "year": 2023,
+    "genre": "Hip Hop, Pop",
+    "energy": 83,
+    "valence": 70,
+    "tempo": 125,
+    "tags": [
+      "fierce",
+      "confident",
+      "cool",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Q2rl3LLClbU",
+    "description": "展現壞女孩氣場的強勢嘻哈流行歌曲"
+  },
+  {
+    "title": "FEARLESS",
+    "artist": "LE SSERAFIM",
+    "album": "FEARLESS",
+    "year": 2022,
+    "genre": "Pop, Electronic",
+    "energy": 80,
+    "valence": 72,
+    "tempo": 122,
+    "tags": [
+      "bold",
+      "confident",
+      "empowering",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=FHBFKFlFLZA",
+    "description": "LE SSERAFIM出道曲，展現無懼姿態的強勢歌曲"
   },
   {
     "title": "ANTIFRAGILE",
     "artist": "LE SSERAFIM",
     "album": "ANTIFRAGILE",
     "year": 2022,
-    "genre": "Reggaeton, Pop",
-    "energy": 90,
-    "valence": 70,
-    "tempo": 105,
-    "tags": ["powerful", "confident", "bouncy", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=pyf8cbAwCGU",
-    "description": "結合雷鬼頓節奏，充滿力量與韌性的洗腦舞曲"
-  },
-  {
-    "title": "Queencard",
-    "artist": "(G)I-DLE",
-    "album": "I feel",
-    "year": 2023,
-    "genre": "Pop, Rock",
-    "energy": 85,
-    "valence": 90,
-    "tempo": 130,
-    "tags": ["confident", "fun", "upbeat", "empowering"],
-    "youtube_url": "https://www.youtube.com/watch?v=7HDeem-JaSY",
-    "description": "極具張力與自信的派對國歌，鼓勵大家愛自己"
-  },
-  {
-    "title": "Fate",
-    "artist": "(G)I-DLE",
-    "album": "2",
-    "year": 2024,
-    "genre": "Pop",
-    "energy": 70,
-    "valence": 65,
-    "tempo": 112,
-    "tags": ["catchy", "melodic", "emotional", "trendy"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "旋律抓耳且帶有淡淡情感共鳴的流行佳作"
-  },
-  {
-    "title": "S-Class",
-    "artist": "Stray Kids",
-    "album": "5-STAR",
-    "year": 2023,
     "genre": "Hip Hop, Electronic",
-    "energy": 95,
-    "valence": 60,
-    "tempo": 105,
-    "tags": ["intense", "unique", "powerful", "experimental"],
-    "youtube_url": "https://www.youtube.com/watch?v=JsOOis4bIFg",
-    "description": "結構獨特、充滿爆發力與獨特風格的強勢嘻哈曲"
-  },
-  {
-    "title": "Chk Chk Boom",
-    "artist": "Stray Kids",
-    "album": "ATE",
-    "year": 2024,
-    "genre": "Hip Hop, Latin",
-    "energy": 88,
-    "valence": 75,
-    "tempo": 108,
-    "tags": ["groovy", "powerful", "catchy", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=2f_e2Gnb08s",
-    "description": "融入拉丁元素的節奏嘻哈，充滿魅力與律動感"
-  },
-  {
-    "title": "Super",
-    "artist": "SEVENTEEN",
-    "album": "FML",
-    "year": 2023,
-    "genre": "Hip Hop, Pop",
-    "energy": 96,
-    "valence": 70,
-    "tempo": 137,
-    "tags": ["epic", "powerful", "motivating", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=-GQg25oP0S4",
-    "description": "氣勢磅礴、如同史詩般的震撼舞曲，極具激勵效果"
-  },
-  {
-    "title": "MAESTRO",
-    "artist": "SEVENTEEN",
-    "album": "17 IS RIGHT HERE",
-    "year": 2024,
-    "genre": "R&B, Electronic",
     "energy": 85,
-    "valence": 60,
-    "tempo": 115,
-    "tags": ["sophisticated", "intense", "artistic", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=O15rN7_mU9g",
-    "description": "充滿藝術氣息與層次感的暗黑風格電子曲"
-  },
-  {
-    "title": "SHEESH",
-    "artist": "BABYMONSTER",
-    "album": "BABYMONS7ER",
-    "year": 2024,
-    "genre": "Hip Hop, Pop",
-    "energy": 90,
-    "valence": 65,
-    "tempo": 140,
-    "tags": ["fierce", "confident", "powerful", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=2wA_b6yAts0",
-    "description": "展現新人霸氣與強烈饒舌風格的重節奏舞曲"
-  },
-  {
-    "title": "Get A Guitar",
-    "artist": "RIIZE",
-    "album": "Get A Guitar",
-    "year": 2023,
-    "genre": "Pop, Funk",
-    "energy": 80,
-    "valence": 85,
-    "tempo": 110,
-    "tags": ["funky", "upbeat", "groovy", "fresh"],
-    "youtube_url": "https://www.youtube.com/watch?v=iUw3LPM7O0E",
-    "description": "充滿復古放克元素與青春活力的吉他流行樂"
-  },
-  {
-    "title": "Boom Boom Bass",
-    "artist": "RIIZE",
-    "album": "RIIZING",
-    "year": 2024,
-    "genre": "Pop, Disco",
-    "energy": 85,
-    "valence": 80,
-    "tempo": 115,
-    "tags": ["groovy", "catchy", "energetic", "fun"],
-    "youtube_url": "https://www.youtube.com/watch?v=B7bVjXkGv6U",
-    "description": "貝斯節奏強烈，讓人想跟著搖擺的動感舞曲"
-  },
-  {
-    "title": "plot twist",
-    "artist": "TWS",
-    "album": "Sparkling Blue",
-    "year": 2024,
-    "genre": "Pop, Synthpop",
-    "energy": 82,
-    "valence": 88,
-    "tempo": 125,
-    "tags": ["refreshing", "youthful", "upbeat", "happy"],
-    "youtube_url": "https://www.youtube.com/watch?v=hVzjiQpg9A8",
-    "description": "如同青春校園劇般清爽且元氣滿滿的流行歌曲"
-  },
-  {
-    "title": "Seven (feat. Latto)",
-    "artist": "Jungkook",
-    "album": "GOLDEN",
-    "year": 2023,
-    "genre": "UK Garage, Pop",
-    "energy": 80,
-    "valence": 85,
-    "tempo": 125,
-    "tags": ["trendy", "romantic", "upbeat", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=QU9c0053UAU",
-    "description": "結合 UK Garage 節奏的輕快浪漫英文情歌"
-  },
-  {
-    "title": "Like Crazy",
-    "artist": "Jimin",
-    "album": "FACE",
-    "year": 2023,
-    "genre": "Synth-pop",
-    "energy": 70,
-    "valence": 55,
-    "tempo": 120,
-    "tags": ["dreamy", "synth", "emotional", "smooth"],
-    "youtube_url": "https://www.youtube.com/watch?v=nSqIGUxE1sU",
-    "description": "夢幻且帶有些許迷惘氛圍的合成器流行曲"
-  },
-  {
-    "title": "Love Me Again",
-    "artist": "V",
-    "album": "Layover",
-    "year": 2023,
-    "genre": "R&B, Soul",
-    "energy": 40,
-    "valence": 45,
-    "tempo": 85,
-    "tags": ["soulful", "chill", "emotional", "relaxing"],
-    "youtube_url": "https://www.youtube.com/watch?v=HYzyRHAJDWA",
-    "description": "嗓音低沉充滿磁性，適合夜晚靜靜聆聽的靈魂樂"
-  },
-  {
-    "title": "Sugar Rush Ride",
-    "artist": "TOMORROW X TOGETHER",
-    "album": "The Name Chapter: TEMPTATION",
-    "year": 2023,
-    "genre": "Pop, Alternative",
-    "energy": 75,
-    "valence": 60,
-    "tempo": 125,
-    "tags": ["dreamy", "catchy", "upbeat", "fantasy"],
-    "youtube_url": "https://www.youtube.com/watch?v=PabUlqIsxLg",
-    "description": "帶有童話般迷幻氛圍的輕快流行曲"
-  },
-  {
-    "title": "Deja Vu",
-    "artist": "TOMORROW X TOGETHER",
-    "album": "minisode 3: TOMORROW",
-    "year": 2024,
-    "genre": "Pop, Rock",
-    "energy": 85,
-    "valence": 65,
-    "tempo": 130,
-    "tags": ["emotional", "energetic", "nostalgic", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=8XJ6o3gZ2Q4",
-    "description": "充滿豐沛情感與搖滾元素的爆發力歌曲"
-  },
-  {
-    "title": "Bite Me",
-    "artist": "ENHYPEN",
-    "album": "DARK BLOOD",
-    "year": 2023,
-    "genre": "Pop, R&B",
-    "energy": 75,
-    "valence": 50,
-    "tempo": 110,
-    "tags": ["dark", "sultry", "catchy", "mysterious"],
-    "youtube_url": "https://www.youtube.com/watch?v=wXFLzODIdUI",
-    "description": "具有強烈吸血鬼奇幻色彩的魅惑歌曲"
-  },
-  {
-    "title": "Sweet Venom",
-    "artist": "ENHYPEN",
-    "album": "ORANGE BLOOD",
-    "year": 2023,
-    "genre": "Pop, Funk",
-    "energy": 80,
-    "valence": 70,
-    "tempo": 115,
-    "tags": ["funky", "groovy", "upbeat", "stylish"],
-    "youtube_url": "https://www.youtube.com/watch?v=L2G3qD_G_t4",
-    "description": "節奏輕快、充滿時尚感的放克流行樂"
-  },
-  {
-    "title": "Sticky",
-    "artist": "KISS OF LIFE",
-    "album": "Sticky",
-    "year": 2024,
-    "genre": "Pop, Afrobeats",
-    "energy": 75,
-    "valence": 85,
-    "tempo": 105,
-    "tags": ["summer", "groovy", "chill", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=3M5N-e1k-jI",
-    "description": "充滿夏日風情與慵懶律動的洗腦舞曲"
-  },
-  {
-    "title": "DASH",
-    "artist": "NMIXX",
-    "album": "Fe3O4: BREAK",
-    "year": 2024,
-    "genre": "Hip Hop, R&B",
-    "energy": 88,
-    "valence": 65,
-    "tempo": 120,
-    "tags": ["powerful", "dynamic", "energetic", "confident"],
-    "youtube_url": "https://www.youtube.com/watch?v=tA0mH9aYtO4",
-    "description": "轉換豐富、展現堅強歌唱實力的混搭風格歌曲"
-  },
-  {
-    "title": "UNTOUCHABLE",
-    "artist": "ITZY",
-    "album": "BORN TO BE",
-    "year": 2024,
-    "genre": "Dance, Pop",
-    "energy": 90,
-    "valence": 70,
-    "tempo": 125,
-    "tags": ["energetic", "fierce", "confident", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=P2f8Zq2Z_iE",
-    "description": "充滿強勢態度與爆發力的經典 ITZY 風格舞曲"
-  },
-  {
-    "title": "I GOT YOU",
-    "artist": "TWICE",
-    "album": "With YOU-th",
-    "year": 2024,
-    "genre": "Synth-pop",
-    "energy": 80,
-    "valence": 75,
-    "tempo": 120,
-    "tags": ["uplifting", "emotional", "friendship", "warm"],
-    "youtube_url": "https://www.youtube.com/watch?v=QZ0DGEQZqE8",
-    "description": "溫暖且感人，歌頌深厚友誼的合成器流行曲"
-  },
-  {
-    "title": "ONE SPARK",
-    "artist": "TWICE",
-    "album": "With YOU-th",
-    "year": 2024,
-    "genre": "Pop, Drum & Bass",
-    "energy": 85,
-    "valence": 80,
-    "tempo": 170,
-    "tags": ["fast", "energetic", "sparkling", "upbeat"],
-    "youtube_url": "https://www.youtube.com/watch?v=Z7nQGfK-7X0",
-    "description": "節奏快速且充滿閃耀感的動感舞曲"
-  },
-  {
-    "title": "Pink Venom",
-    "artist": "BLACKPINK",
-    "album": "BORN PINK",
-    "year": 2022,
-    "genre": "Hip Hop, Pop",
-    "energy": 90,
-    "valence": 65,
-    "tempo": 90,
-    "tags": ["fierce", "powerful", "traditional", "confident"],
-    "youtube_url": "https://www.youtube.com/watch?v=gQlMMD8auMs",
-    "description": "融合韓國傳統樂器與強烈嘻哈節奏的霸氣回歸曲"
-  },
-  {
-    "title": "Shut Down",
-    "artist": "BLACKPINK",
-    "album": "BORN PINK",
-    "year": 2022,
-    "genre": "Hip Hop, Classical",
-    "energy": 85,
-    "valence": 60,
-    "tempo": 110,
-    "tags": ["stylish", "confident", "chic", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=POe9SOEKotk",
-    "description": "取樣古典樂《鐘》，充滿高級感與從容自信的嘻哈曲"
-  },
-  {
-    "title": "FLOWER",
-    "artist": "JISOO",
-    "album": "ME",
-    "year": 2023,
-    "genre": "Pop, Dance",
-    "energy": 65,
-    "valence": 55,
-    "tempo": 105,
-    "tags": ["elegant", "catchy", "unique", "aesthetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=YudHcBIxlYw",
-    "description": "旋律獨特、帶有異國風情與優雅氣質的個人單曲"
-  },
-  {
-    "title": "You & Me",
-    "artist": "JENNIE",
-    "album": "You & Me",
-    "year": 2023,
-    "genre": "Dance, Pop",
-    "energy": 75,
-    "valence": 65,
-    "tempo": 112,
-    "tags": ["romantic", "catchy", "dreamy", "upbeat"],
-    "youtube_url": "https://www.youtube.com/watch?v=eBtlWnqL6H0",
-    "description": "夢幻且節奏感十足的浪漫流行舞曲"
-  },
-  {
-    "title": "Cupid (Twin Ver.)",
-    "artist": "FIFTY FIFTY",
-    "album": "The Beginning: Cupid",
-    "year": 2023,
-    "genre": "Synth-pop, R&B",
-    "energy": 60,
-    "valence": 75,
-    "tempo": 120,
-    "tags": ["sweet", "viral", "chill", "easy-listening"],
-    "youtube_url": "https://www.youtube.com/watch?v=Qc7_zRjH808",
-    "description": "紅遍全球、旋律極度順耳且輕快的甜蜜歌曲"
-  },
-  {
-    "title": "To. X",
-    "artist": "TAEYEON",
-    "album": "To. X",
-    "year": 2023,
-    "genre": "R&B, Pop",
-    "energy": 55,
-    "valence": 45,
-    "tempo": 95,
-    "tags": ["chill", "emotional", "smooth", "aesthetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F3T4P9Wb2s",
-    "description": "充滿節奏藍調氛圍、訴說著放下過往的細膩之作"
-  },
-  {
-    "title": "Chill Kill",
-    "artist": "Red Velvet",
-    "album": "Chill Kill",
-    "year": 2023,
-    "genre": "Pop, R&B",
-    "energy": 75,
-    "valence": 55,
-    "tempo": 115,
-    "tags": ["dramatic", "mysterious", "dynamic", "vocal"],
-    "youtube_url": "https://www.youtube.com/watch?v=R90E5P_E9tE",
-    "description": "情緒張力極大，完美展現歌唱實力與神祕風格的歌曲"
-  },
-  {
-    "title": "Cosmic",
-    "artist": "Red Velvet",
-    "album": "Cosmic",
-    "year": 2024,
-    "genre": "Pop, Electronic",
-    "energy": 80,
-    "valence": 70,
-    "tempo": 120,
-    "tags": ["ethereal", "upbeat", "dreamy", "magical"],
-    "youtube_url": "https://www.youtube.com/watch?v=KzX-G-T6oEE",
-    "description": "宛如在宇宙星空中漫舞的空靈且動感之作"
-  },
-  {
-    "title": "Smoothie",
-    "artist": "NCT DREAM",
-    "album": "DREAM()SCAPE",
-    "year": 2024,
-    "genre": "Hip Hop, Dance",
-    "energy": 85,
-    "valence": 60,
-    "tempo": 105,
-    "tags": ["dark", "groovy", "intense", "confident"],
-    "youtube_url": "https://www.youtube.com/watch?v=sIuLw4dGqBE",
-    "description": "帶有強烈重低音與暗黑氣息的嘻哈舞曲"
-  },
-  {
-    "title": "Fact Check",
-    "artist": "NCT 127",
-    "album": "Fact Check",
-    "year": 2023,
-    "genre": "Hip Hop, Electronic",
-    "energy": 90,
-    "valence": 65,
-    "tempo": 108,
-    "tags": ["energetic", "powerful", "intense", "festival"],
-    "youtube_url": "https://www.youtube.com/watch?v=5rT7O6eS1yI",
-    "description": "節奏感極強、適合大型慶典氛圍的超嗨舞曲"
-  },
-  {
-    "title": "Drama",
-    "artist": "aespa",
-    "album": "Drama",
-    "year": 2023,
-    "genre": "Hip Hop, Dance",
-    "energy": 95,
-    "valence": 60,
-    "tempo": 125,
-    "tags": ["dramatic", "fierce", "powerful", "dark"],
-    "youtube_url": "https://www.youtube.com/watch?v=D8VEhcPeSlc",
-    "description": "極具戲劇張力與強大氣場的重磅回歸曲"
-  },
-  {
-    "title": "Armageddon",
-    "artist": "aespa",
-    "album": "Armageddon",
-    "year": 2024,
-    "genre": "Hip Hop, Electronic",
-    "energy": 90,
-    "valence": 55,
-    "tempo": 118,
-    "tags": ["dark", "epic", "intense", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=2K_X9kLwY0o",
-    "description": "充滿末日史詩感與低沉重擊節拍的獨特舞曲"
+    "valence": 68,
+    "tempo": 128,
+    "tags": [
+      "fierce",
+      "empowering",
+      "intense",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=wkhWBDaqGm8",
+    "description": "強悍有力的歌曲，傳遞越挫越勇的精神"
   },
   {
     "title": "EASY",
     "artist": "LE SSERAFIM",
     "album": "EASY",
     "year": 2024,
-    "genre": "R&B, Hip Hop",
-    "energy": 65,
-    "valence": 60,
-    "tempo": 95,
-    "tags": ["chill", "groovy", "smooth", "confident"],
-    "youtube_url": "https://www.youtube.com/watch?v=bNKXxwOQKWU",
-    "description": "慵懶且帶有強烈律動感的 Old School R&B 歌曲"
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 74,
+    "tempo": 120,
+    "tags": [
+      "cool",
+      "confident",
+      "catchy",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=GDvvTRYmOzg",
+    "description": "充滿自信氣場的電音流行歌曲"
   },
   {
-    "title": "Smart",
+    "title": "CRAZY",
     "artist": "LE SSERAFIM",
-    "album": "EASY",
+    "album": "CRAZY",
     "year": 2024,
-    "genre": "Afrobeats, Pop",
-    "energy": 75,
-    "valence": 85,
-    "tempo": 110,
-    "tags": ["groovy", "catchy", "dance", "trendy"],
-    "youtube_url": "https://www.youtube.com/watch?v=1Z-Qp-zDXX0",
-    "description": "結合 Afrobeats 節奏、讓人想跟著扭動的洗腦神曲"
+    "genre": "Pop, Electronic",
+    "energy": 88,
+    "valence": 78,
+    "tempo": 130,
+    "tags": [
+      "wild",
+      "energetic",
+      "uplifting",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=c5IOlIuLJcU",
+    "description": "充滿野性活力的強勢舞曲"
   },
   {
-    "title": "HEYA",
-    "artist": "IVE",
-    "album": "IVE SWITCH",
-    "year": 2024,
-    "genre": "Pop, Hip Hop",
-    "energy": 85,
-    "valence": 70,
-    "tempo": 115,
-    "tags": ["powerful", "mythical", "dynamic", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "融入韓國傳統民間故事元素，充滿變化的強勢舞曲"
-  },
-  {
-    "title": "Baddie",
-    "artist": "IVE",
-    "album": "I'VE MINE",
-    "year": 2023,
-    "genre": "Hip Hop, Pop",
-    "energy": 80,
+    "title": "TOMBOY",
+    "artist": "(G)I-DLE",
+    "album": "I NEVER DIE",
+    "year": 2022,
+    "genre": "Rock, Hip Hop",
+    "energy": 87,
     "valence": 65,
-    "tempo": 105,
-    "tags": ["dark", "confident", "catchy", "fierce"],
-    "youtube_url": "https://www.youtube.com/watch?v=Da4P2uT4mAQ",
-    "description": "展現叛逆與反差魅力的嘻哈風格歌曲"
+    "tempo": 132,
+    "tags": [
+      "rebellious",
+      "fierce",
+      "empowering",
+      "rock"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=R89TXl1UbhI",
+    "description": "融合搖滾與嘻哈的叛逆女孩宣言"
   },
   {
-    "title": "How Sweet",
-    "artist": "NewJeans",
-    "album": "How Sweet",
-    "year": 2024,
-    "genre": "Miami Bass, Pop",
-    "energy": 82,
-    "valence": 80,
-    "tempo": 130,
-    "tags": ["upbeat", "bouncy", "fresh", "trendy"],
-    "youtube_url": "https://www.youtube.com/watch?v=Q3K0TOvTOno",
-    "description": "節奏強烈明快，帶有復古舞曲風格的清爽之作"
-  },
-  {
-    "title": "Bubble Gum",
-    "artist": "NewJeans",
-    "album": "How Sweet",
-    "year": 2024,
-    "genre": "City Pop, R&B",
-    "energy": 65,
-    "valence": 75,
-    "tempo": 110,
-    "tags": ["chill", "nostalgic", "sweet", "relaxing"],
-    "youtube_url": "https://www.youtube.com/watch?v=C_Xq98EWehI",
-    "description": "宛如微風拂過般柔和，帶有 City Pop 氛圍的療癒單曲"
-  },
-  {
-    "title": "OMG",
-    "artist": "NewJeans",
-    "album": "OMG",
-    "year": 2023,
-    "genre": "R&B, Hip Hop",
-    "energy": 75,
-    "valence": 85,
-    "tempo": 133,
-    "tags": ["trendy", "catchy", "bouncy", "fun"],
-    "youtube_url": "https://www.youtube.com/watch?v=sVTy_wmn5SU",
-    "description": "紅遍短影音平台，極具節奏感與魅力的洗腦流行樂"
-  },
-  {
-    "title": "Hype Boy",
-    "artist": "NewJeans",
-    "album": "New Jeans",
+    "title": "Nxde",
+    "artist": "(G)I-DLE",
+    "album": "I Love",
     "year": 2022,
-    "genre": "Moombahton, Pop",
-    "energy": 80,
-    "valence": 88,
-    "tempo": 100,
-    "tags": ["fresh", "iconic", "upbeat", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=11cta61wi0g",
-    "description": "引領 Y2K 風潮，清爽且百聽不厭的經典出道曲"
-  },
-  {
-    "title": "Teddy Bear",
-    "artist": "STAYC",
-    "album": "Teddy Bear",
-    "year": 2023,
-    "genre": "Pop, Dance",
-    "energy": 85,
-    "valence": 90,
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 62,
     "tempo": 125,
-    "tags": ["cute", "positive", "happy", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=T_s_7aHn_5Q",
-    "description": "傳遞正能量，充滿元氣與可愛氛圍的應援歌曲"
+    "tags": [
+      "artistic",
+      "bold",
+      "provocative",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=CLeZyIID9Bo",
+    "description": "充滿藝術感與挑釁意味的大膽流行舞曲"
   },
   {
-    "title": "Bubble",
-    "artist": "STAYC",
-    "album": "TEENFRESH",
+    "title": "Queencard",
+    "artist": "(G)I-DLE",
+    "album": "I Feel",
     "year": 2023,
-    "genre": "Pop, Synthpop",
-    "energy": 88,
-    "valence": 95,
-    "tempo": 130,
-    "tags": ["bubbly", "fun", "upbeat", "refreshing"],
-    "youtube_url": "https://www.youtube.com/watch?v=2QJz9A-B2y8",
-    "description": "宛如氣泡水般清涼解渴的夏日歡快舞曲"
-  },
-  {
-    "title": "POP!",
-    "artist": "NAYEON",
-    "album": "IM NAYEON",
-    "year": 2022,
     "genre": "Pop, Dance",
-    "energy": 95,
-    "valence": 90,
-    "tempo": 115,
-    "tags": ["bubbly", "energetic", "fun", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=f6YDKF0LVWw",
-    "description": "充滿果汁美與活潑能量的極致甜美流行曲"
-  },
-  {
-    "title": "ABCD",
-    "artist": "NAYEON",
-    "album": "NA",
-    "year": 2024,
-    "genre": "Pop, Dance",
-    "energy": 85,
-    "valence": 80,
-    "tempo": 110,
-    "tags": ["confident", "groovy", "upbeat", "stylish"],
-    "youtube_url": "https://www.youtube.com/watch?v=Qh_t1J9P8oU",
-    "description": "展現成熟魅力與絕佳唱跳實力的動感作品"
-  },
-  {
-    "title": "Killin' Me Good",
-    "artist": "JIHYO",
-    "album": "ZONE",
-    "year": 2023,
-    "genre": "R&B, Pop",
-    "energy": 88,
-    "valence": 75,
-    "tempo": 112,
-    "tags": ["powerful", "vocal", "groovy", "dynamic"],
-    "youtube_url": "https://www.youtube.com/watch?v=zS4I5vL4Hn8",
-    "description": "完美展現渾厚嗓音與扎實唱功的節奏藍調流行曲"
-  },
-  {
-    "title": "Earth, Wind & Fire",
-    "artist": "BOYNEXTDOOR",
-    "album": "HOW?",
-    "year": 2024,
-    "genre": "Pop, Hip Hop",
-    "energy": 90,
-    "valence": 85,
-    "tempo": 140,
-    "tags": ["hyper", "energetic", "fun", "fast"],
-    "youtube_url": "https://www.youtube.com/watch?v=HntXzN2xH68",
-    "description": "語速極快、充滿搞怪趣味與爆發活力的趣味歌曲"
-  },
-  {
-    "title": "SPOT! (feat. JENNIE)",
-    "artist": "ZICO",
-    "album": "SPOT!",
-    "year": 2024,
-    "genre": "Hip Hop, Pop",
-    "energy": 80,
-    "valence": 85,
-    "tempo": 105,
-    "tags": ["trendy", "groovy", "catchy", "collaboration"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "兩大音源強者合作，極具街頭派對氛圍的洗腦熱曲"
+    "energy": 82,
+    "valence": 88,
+    "tempo": 120,
+    "tags": [
+      "confident",
+      "fun",
+      "upbeat",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=zov8_0HUxvQ",
+    "description": "充滿自信與歡快的女王感舞曲"
   },
   {
     "title": "Super Lady",
     "artist": "(G)I-DLE",
     "album": "2",
     "year": 2024,
-    "genre": "Electronic, Pop",
-    "energy": 98,
-    "valence": 70,
-    "tempo": 130,
-    "tags": ["epic", "empowering", "fierce", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=T_s_7aHn_5Q",
-    "description": "氣場全開，致敬所有堅強女性的震撼電音讚歌"
+    "genre": "Pop, Electronic",
+    "energy": 83,
+    "valence": 80,
+    "tempo": 125,
+    "tags": [
+      "powerful",
+      "uplifting",
+      "confident",
+      "anthemic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=lC4OAPY9oUE",
+    "description": "充滿力量感的女性賦能流行歌曲"
   },
   {
-    "title": "Nxde",
-    "artist": "(G)I-DLE",
-    "album": "I love",
+    "title": "Pink Venom",
+    "artist": "BLACKPINK",
+    "album": "Born Pink",
     "year": 2022,
-    "genre": "Jazz, Pop",
-    "energy": 85,
-    "valence": 75,
-    "tempo": 115,
-    "tags": ["theatrical", "concept", "empowering", "confident"],
-    "youtube_url": "https://www.youtube.com/watch?v=fCO7f0SmrDc",
-    "description": "融合爵士元素與百老匯音樂劇風格的藝術之作"
+    "genre": "Hip Hop, Electronic",
+    "energy": 90,
+    "valence": 65,
+    "tempo": 134,
+    "tags": [
+      "fierce",
+      "powerful",
+      "edgy",
+      "intense"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=mPO6DsPWCVo",
+    "description": "充滿毒辣氣場的強勢回歸之作"
   },
   {
-    "title": "LALALALA",
-    "artist": "Stray Kids",
-    "album": "ROCK-STAR",
+    "title": "Shut Down",
+    "artist": "BLACKPINK",
+    "album": "Born Pink",
+    "year": 2022,
+    "genre": "Hip Hop, Electronic",
+    "energy": 88,
+    "valence": 60,
+    "tempo": 130,
+    "tags": [
+      "powerful",
+      "fierce",
+      "intense",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=tyMr7pnIWtc",
+    "description": "融合古典音樂的強勁嘻哈歌曲"
+  },
+  {
+    "title": "Yet To Come",
+    "artist": "BTS",
+    "album": "Proof",
+    "year": 2022,
+    "genre": "Pop, Electronic",
+    "energy": 70,
+    "valence": 78,
+    "tempo": 110,
+    "tags": [
+      "hopeful",
+      "uplifting",
+      "emotional",
+      "anthemic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=MBdVXkSdhwU",
+    "description": "充滿希望感的BTS精選紀念歌曲"
+  },
+  {
+    "title": "Seven",
+    "artist": "Jung Kook ft. Latto",
+    "album": "Seven",
     "year": 2023,
-    "genre": "Hip Hop, Rock",
-    "energy": 96,
-    "valence": 65,
+    "genre": "Pop, R&B",
+    "energy": 80,
+    "valence": 85,
     "tempo": 120,
-    "tags": ["intense", "rock", "powerful", "festival"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "狂放不羈、充滿搖滾精神與爆炸能量的超級舞台曲"
+    "tags": [
+      "fun",
+      "romantic",
+      "upbeat",
+      "summer"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=QU9c0053UAU",
+    "description": "充滿夏日氣息的浪漫流行歌曲"
+  },
+  {
+    "title": "Standing Next to You",
+    "artist": "Jung Kook",
+    "album": "GOLDEN",
+    "year": 2023,
+    "genre": "Funk, R&B",
+    "energy": 85,
+    "valence": 82,
+    "tempo": 118,
+    "tags": [
+      "groovy",
+      "romantic",
+      "retro",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=bRQOROa0N4w",
+    "description": "融合復古Funk風格的浪漫舞曲"
+  },
+  {
+    "title": "0X1=LOVESONG",
+    "artist": "TXT ft. Seori",
+    "album": "The Chaos Chapter: FREEZE",
+    "year": 2021,
+    "genre": "Rock, Pop",
+    "energy": 82,
+    "valence": 68,
+    "tempo": 130,
+    "tags": [
+      "rock",
+      "emotional",
+      "intense",
+      "youthful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=bvDsxLLEaow",
+    "description": "融合搖滾風格的青春情感歌曲"
+  },
+  {
+    "title": "Good Boy Gone Bad",
+    "artist": "TXT",
+    "album": "minisode 2: Thursday's Child",
+    "year": 2022,
+    "genre": "Rock, Electronic",
+    "energy": 88,
+    "valence": 55,
+    "tempo": 138,
+    "tags": [
+      "dark",
+      "rebellious",
+      "intense",
+      "rock"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=vl_zRGDFBvY",
+    "description": "充滿黑暗氣息的搖滾電音歌曲"
+  },
+  {
+    "title": "Sugar Rush Ride",
+    "artist": "TXT",
+    "album": "The Name Chapter: TEMPTATION",
+    "year": 2023,
+    "genre": "Pop, Rock",
+    "energy": 84,
+    "valence": 65,
+    "tempo": 134,
+    "tags": [
+      "intense",
+      "dark",
+      "energetic",
+      "rebellious"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=EzRoKBuXq_Y",
+    "description": "帶有誘惑感的黑暗流行搖滾歌曲"
+  },
+  {
+    "title": "Chasing That Feeling",
+    "artist": "TXT",
+    "album": "The Name Chapter: TEMPTATION",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 72,
+    "valence": 60,
+    "tempo": 115,
+    "tags": [
+      "emotional",
+      "dreamy",
+      "introspective",
+      "youthful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=zSLFSlpFuJ4",
+    "description": "帶有追逐感與青春迷茫的電音流行歌曲"
   },
   {
     "title": "MANIAC",
@@ -785,193 +905,1114 @@
     "album": "ODDINARY",
     "year": 2022,
     "genre": "Hip Hop, Electronic",
+    "energy": 87,
+    "valence": 72,
+    "tempo": 132,
+    "tags": [
+      "intense",
+      "chaotic",
+      "energetic",
+      "powerful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=pHatBOWRbRg",
+    "description": "充滿混沌能量的強烈嘻哈電音歌曲"
+  },
+  {
+    "title": "Case 143",
+    "artist": "Stray Kids",
+    "album": "MAXIDENT",
+    "year": 2022,
+    "genre": "Hip Hop, Pop",
+    "energy": 80,
+    "valence": 78,
+    "tempo": 125,
+    "tags": [
+      "fun",
+      "catchy",
+      "playful",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=mPEMRrqVkgo",
+    "description": "充滿趣味的戀愛嘻哈流行歌曲"
+  },
+  {
+    "title": "Rock-Star",
+    "artist": "Stray Kids",
+    "album": "樂-STAR",
+    "year": 2023,
+    "genre": "Rock, Hip Hop",
     "energy": 92,
-    "valence": 60,
-    "tempo": 105,
-    "tags": ["quirky", "intense", "unique", "powerful"],
-    "youtube_url": "https://www.youtube.com/watch?v=OvioeS1ZZ7o",
-    "description": "旋律古怪抓耳，鼓勵大家擁抱自身獨特性的強烈曲目"
-  },
-  {
-    "title": "BONA BONA",
-    "artist": "TREASURE",
-    "album": "REBOOT",
-    "year": 2023,
-    "genre": "Dance, Electronic",
-    "energy": 94,
     "valence": 70,
-    "tempo": 128,
-    "tags": ["energetic", "grand", "powerful", "marching"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "帶有軍樂隊鼓聲元素，氣勢恢宏的 YG 風格舞曲"
+    "tempo": 138,
+    "tags": [
+      "rock",
+      "powerful",
+      "rebellious",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=oFqAGiqGZC4",
+    "description": "充滿搖滾精神的爆發性歌曲"
   },
   {
-    "title": "BOUNCY (K-HOT CHILLI PEPPERS)",
-    "artist": "ATEEZ",
-    "album": "THE WORLD EP.2 : OUTLAW",
-    "year": 2023,
+    "title": "Miroh",
+    "artist": "Stray Kids",
+    "album": "Clé 1 : MIROH",
+    "year": 2019,
     "genre": "Hip Hop, Electronic",
-    "energy": 97,
-    "valence": 65,
-    "tempo": 110,
-    "tags": ["spicy", "wild", "energetic", "intense"],
-    "youtube_url": "https://www.youtube.com/watch?v=nSQX9gT4H4I",
-    "description": "極度火熱、充滿野性與獨特辛辣魅力的強烈嘻哈"
-  },
-  {
-    "title": "WORK",
-    "artist": "ATEEZ",
-    "album": "GOLDEN HOUR : Part.1",
-    "year": 2024,
-    "genre": "Hip Hop, Latin",
-    "energy": 90,
+    "energy": 91,
     "valence": 75,
-    "tempo": 105,
-    "tags": ["groovy", "catchy", "fun", "bouncy"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "節奏輕快洗腦，充滿幽默感與拉丁風情的舞曲"
+    "tempo": 140,
+    "tags": [
+      "motivating",
+      "powerful",
+      "intense",
+      "anthemic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Lz_N4lrF5RI",
+    "description": "充滿鬥志的激勵嘻哈歌曲"
   },
   {
-    "title": "WOKE UP",
-    "artist": "XG",
-    "album": "WOKE UP",
-    "year": 2024,
-    "genre": "Hip Hop",
-    "energy": 95,
-    "valence": 60,
-    "tempo": 100,
-    "tags": ["fierce", "rap", "powerful", "swag"],
-    "youtube_url": "https://www.youtube.com/watch?v=yWNT3_J-q2U",
-    "description": "全員大秀硬核饒舌實力，態度滿分的嘻哈炸曲"
+    "title": "Drunk-Dazed",
+    "artist": "ENHYPEN",
+    "album": "BORDER : CARNIVAL",
+    "year": 2021,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 65,
+    "tempo": 128,
+    "tags": [
+      "dark",
+      "mysterious",
+      "energetic",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=iPmq_YwGZLE",
+    "description": "充滿神秘黑暗感的狂歡電音舞曲"
   },
   {
-    "title": "LEFT RIGHT",
-    "artist": "XG",
-    "album": "SHOOTING STAR",
+    "title": "Future Perfect (Pass the MIC)",
+    "artist": "ENHYPEN",
+    "album": "MANIFESTO : DAY 1",
+    "year": 2022,
+    "genre": "Hip Hop, Electronic",
+    "energy": 86,
+    "valence": 68,
+    "tempo": 132,
+    "tags": [
+      "confident",
+      "powerful",
+      "intense",
+      "anthemic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=C6kG-RFn4s8",
+    "description": "充滿宣言感的強勢嘻哈歌曲"
+  },
+  {
+    "title": "Bite Me",
+    "artist": "ENHYPEN",
+    "album": "DARK BLOOD",
     "year": 2023,
-    "genre": "R&B, Hip Hop",
+    "genre": "Rock, Electronic",
+    "energy": 85,
+    "valence": 62,
+    "tempo": 132,
+    "tags": [
+      "dark",
+      "intense",
+      "edgy",
+      "rock"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=B5OSQ7R-S-A",
+    "description": "充滿黑暗吸血鬼概念的搖滾電音歌曲"
+  },
+  {
+    "title": "Hot (feat. Bumzu)",
+    "artist": "SEVENTEEN",
+    "album": "Face the Sun",
+    "year": 2022,
+    "genre": "Hip Hop, Electronic",
+    "energy": 88,
+    "valence": 72,
+    "tempo": 136,
+    "tags": [
+      "powerful",
+      "intense",
+      "energetic",
+      "fierce"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=M5PzBuHsRGI",
+    "description": "SEVENTEEN全員展現強勁魄力的代表作"
+  },
+  {
+    "title": "Super",
+    "artist": "SEVENTEEN",
+    "album": "FML",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 85,
+    "valence": 75,
+    "tempo": 128,
+    "tags": [
+      "powerful",
+      "anthemic",
+      "uplifting",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=0aOcpSxMiLo",
+    "description": "充滿激昂能量的應援感流行歌曲"
+  },
+  {
+    "title": "MAESTRO",
+    "artist": "SEVENTEEN",
+    "album": "SPILL THE FEELS",
+    "year": 2024,
+    "genre": "Pop, Electronic",
+    "energy": 83,
+    "valence": 70,
+    "tempo": 126,
+    "tags": [
+      "artistic",
+      "powerful",
+      "confident",
+      "sophisticated"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=d0CJ3KDOsgo",
+    "description": "展現藝術自信的優雅流行電音歌曲"
+  },
+  {
+    "title": "HOT",
+    "artist": "SEVENTEEN",
+    "album": "Face the Sun",
+    "year": 2022,
+    "genre": "Hip Hop, Electronic",
+    "energy": 89,
+    "valence": 68,
+    "tempo": 138,
+    "tags": [
+      "intense",
+      "fierce",
+      "powerful",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=fjpgGQHVBjA",
+    "description": "充滿熾熱能量的強勁舞曲"
+  },
+  {
+    "title": "Sticker",
+    "artist": "NCT 127",
+    "album": "Sticker",
+    "year": 2021,
+    "genre": "R&B, Pop",
     "energy": 75,
     "valence": 70,
-    "tempo": 102,
-    "tags": ["smooth", "y2k", "groovy", "chill"],
-    "youtube_url": "https://www.youtube.com/watch?v=T6YJWwq1V58",
-    "description": "充滿 Y2K 復古 R&B 氛圍，旋律滑順且充滿律動感"
+    "tempo": 112,
+    "tags": [
+      "groovy",
+      "unique",
+      "smooth",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=lQFX1dLa3BI",
+    "description": "帶有獨特吉他旋律的律動感歌曲"
   },
   {
-    "title": "Killin' It",
-    "artist": "P1Harmony",
-    "album": "Killin' It",
-    "year": 2024,
-    "genre": "Hip Hop, Pop",
-    "energy": 90,
-    "valence": 80,
-    "tempo": 110,
-    "tags": ["fun", "energetic", "confident", "catchy"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "充滿復古嘻哈氛圍與青春自信的超嗨歌曲"
+    "title": "2 Baddies",
+    "artist": "NCT 127",
+    "album": "2 Baddies",
+    "year": 2022,
+    "genre": "Electronic, Hip Hop",
+    "energy": 87,
+    "valence": 68,
+    "tempo": 134,
+    "tags": [
+      "futuristic",
+      "intense",
+      "powerful",
+      "cool"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=YTFNYANy9YA",
+    "description": "充滿未來賽車感的強勁電音歌曲"
+  },
+  {
+    "title": "Ay-Yo",
+    "artist": "NCT 127",
+    "album": "질주 (2 Baddies)",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 74,
+    "tempo": 124,
+    "tags": [
+      "upbeat",
+      "catchy",
+      "energetic",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=PGCYeI7-6mI",
+    "description": "節奏感強烈的爽快流行電音舞曲"
+  },
+  {
+    "title": "Hot Sauce",
+    "artist": "NCT Dream",
+    "album": "Hot Sauce",
+    "year": 2021,
+    "genre": "Electronic, Hip Hop",
+    "energy": 85,
+    "valence": 72,
+    "tempo": 132,
+    "tags": [
+      "spicy",
+      "energetic",
+      "intense",
+      "futuristic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=nxKBvHF5HLk",
+    "description": "充滿衝勁與未來感的電子嘻哈歌曲"
+  },
+  {
+    "title": "Glitch Mode",
+    "artist": "NCT Dream",
+    "album": "Glitch Mode",
+    "year": 2022,
+    "genre": "Hip Hop, Electronic",
+    "energy": 84,
+    "valence": 67,
+    "tempo": 130,
+    "tags": [
+      "glitchy",
+      "intense",
+      "futuristic",
+      "powerful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=gXE_bWmjiro",
+    "description": "帶有故障美學的電音嘻哈歌曲"
+  },
+  {
+    "title": "ISTJ",
+    "artist": "NCT Dream",
+    "album": "ISTJ",
+    "year": 2023,
+    "genre": "Pop, R&B",
+    "energy": 70,
+    "valence": 72,
+    "tempo": 106,
+    "tags": [
+      "smooth",
+      "groovy",
+      "romantic",
+      "cool"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=L5IYcEdDVCw",
+    "description": "帶有成熟韻味的流暢R&B流行歌曲"
   },
   {
     "title": "WA DA DA",
     "artist": "Kep1er",
     "album": "FIRST IMPACT",
     "year": 2022,
-    "genre": "Dance, Electronic",
-    "energy": 92,
-    "valence": 85,
-    "tempo": 126,
-    "tags": ["energetic", "catchy", "dance", "upbeat"],
-    "youtube_url": "https://www.youtube.com/watch?v=n0j5NpPVcj0",
-    "description": "副歌極度洗腦，充滿活力與朝氣的出道名曲"
+    "genre": "Pop, Electronic",
+    "energy": 80,
+    "valence": 82,
+    "tempo": 122,
+    "tags": [
+      "energetic",
+      "fresh",
+      "upbeat",
+      "fun"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Ny2sCbHFLOY",
+    "description": "Kep1er出道曲，充滿活力的爽朗流行舞曲"
   },
   {
-    "title": "In Bloom",
-    "artist": "ZEROBASEONE",
-    "album": "YOUTH IN THE SHADE",
+    "title": "TALK THAT TALK",
+    "artist": "TWICE",
+    "album": "BETWEEN 1&2",
+    "year": 2022,
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 84,
+    "tempo": 116,
+    "tags": [
+      "upbeat",
+      "fun",
+      "catchy",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=rECRkFQlmP0",
+    "description": "充滿甜美活力的TWICE典型風格歌曲"
+  },
+  {
+    "title": "SET ME FREE",
+    "artist": "TWICE",
+    "album": "READY TO BE",
     "year": 2023,
-    "genre": "Synth-pop",
-    "energy": 85,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 78,
+    "tempo": 128,
+    "tags": [
+      "empowering",
+      "energetic",
+      "liberating",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=QvWkImHMFSE",
+    "description": "展現TWICE成熟轉型的解放感歌曲"
+  },
+  {
+    "title": "Moonlight Sunrise",
+    "artist": "TWICE",
+    "album": "READY TO BE",
+    "year": 2023,
+    "genre": "R&B, Pop",
+    "energy": 55,
+    "valence": 74,
+    "tempo": 96,
+    "tags": [
+      "dreamy",
+      "romantic",
+      "smooth",
+      "night"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=WJvEYjMDYdk",
+    "description": "帶有夢幻夜晚氣息的浪漫R&B歌曲"
+  },
+  {
+    "title": "Don't Call Me",
+    "artist": "SHINee",
+    "album": "Don't Call Me",
+    "year": 2021,
+    "genre": "R&B, Electronic",
+    "energy": 80,
+    "valence": 55,
+    "tempo": 128,
+    "tags": [
+      "cool",
+      "dark",
+      "powerful",
+      "mature"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=TLAMiNt0hm4",
+    "description": "SHINee回歸之作，展現成熟黑暗魅力"
+  },
+  {
+    "title": "MAMAMOO - Aya",
+    "artist": "MAMAMOO",
+    "album": "MIC ON",
+    "year": 2021,
+    "genre": "R&B, Hip Hop",
+    "energy": 82,
+    "valence": 80,
+    "tempo": 124,
+    "tags": [
+      "empowering",
+      "confident",
+      "fun",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=E26i4oBRoXI",
+    "description": "展現MAMAMOO女王氣場的自信歌曲"
+  },
+  {
+    "title": "Rush Hour",
+    "artist": "Crush ft. j-hope",
+    "album": "Rush Hour",
+    "year": 2022,
+    "genre": "R&B, Hip Hop",
+    "energy": 78,
+    "valence": 82,
+    "tempo": 118,
+    "tags": [
+      "groovy",
+      "fun",
+      "smooth",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=uRlbhwRYd5Y",
+    "description": "充滿律動感與歡快氣息的R&B嘻哈歌曲"
+  },
+  {
+    "title": "Flower",
+    "artist": "JISOO",
+    "album": "ME",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 68,
+    "tempo": 120,
+    "tags": [
+      "elegant",
+      "fierce",
+      "empowering",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=8hkSHwGJXEQ",
+    "description": "JISOO個人出道作，融合東方美學的優雅舞曲"
+  },
+  {
+    "title": "Love Me Like This",
+    "artist": "NMIXX",
+    "album": "enOi",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 78,
     "valence": 80,
     "tempo": 120,
-    "tags": ["youthful", "uplifting", "refreshing", "emotional"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "取樣經典名曲，充滿青春綻放光芒與希望的清爽之作"
+    "tags": [
+      "upbeat",
+      "fun",
+      "sweet",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Vj9gHKDQnQs",
+    "description": "NMIXX充滿甜蜜感的清爽流行舞曲"
   },
   {
-    "title": "Feel the POP",
-    "artist": "ZEROBASEONE",
-    "album": "You had me at HELLO",
+    "title": "O.O",
+    "artist": "NMIXX",
+    "album": "AD MARE",
+    "year": 2022,
+    "genre": "Electronic, Pop",
+    "energy": 86,
+    "valence": 65,
+    "tempo": 136,
+    "tags": [
+      "experimental",
+      "intense",
+      "innovative",
+      "complex"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=H3LVHF0TxCU",
+    "description": "充滿實驗性的多段式流行電音出道曲"
+  },
+  {
+    "title": "DM",
+    "artist": "fromis_9",
+    "album": "from our Memento Box",
+    "year": 2022,
+    "genre": "Pop, Electronic",
+    "energy": 70,
+    "valence": 82,
+    "tempo": 108,
+    "tags": [
+      "cute",
+      "sweet",
+      "playful",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=EKUCiPNgBHI",
+    "description": "甜蜜可愛的少女感流行歌曲"
+  },
+  {
+    "title": "Thunderous (소리길)",
+    "artist": "Stray Kids",
+    "album": "NOEASY",
+    "year": 2021,
+    "genre": "Hip Hop, Traditional",
+    "energy": 93,
+    "valence": 70,
+    "tempo": 145,
+    "tags": [
+      "powerful",
+      "traditional",
+      "intense",
+      "epic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=DjEfnfkIxEI",
+    "description": "融合韓國傳統元素的震撼嘻哈歌曲"
+  },
+  {
+    "title": "Polaroid Love",
+    "artist": "ENHYPEN",
+    "album": "BORDER : CARNIVAL",
+    "year": 2021,
+    "genre": "Indie Pop",
+    "energy": 42,
+    "valence": 72,
+    "tempo": 88,
+    "tags": [
+      "chill",
+      "romantic",
+      "sweet",
+      "dreamy"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=x5iqjuLZ8ds",
+    "description": "帶有膠捲感的溫柔浪漫慢歌"
+  },
+  {
+    "title": "Ditto",
+    "artist": "NewJeans",
+    "album": "OMG",
+    "year": 2022,
+    "genre": "R&B, Pop",
+    "energy": 45,
+    "valence": 65,
+    "tempo": 85,
+    "tags": [
+      "nostalgic",
+      "dreamy",
+      "emotional",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=pSUydWEqKwE",
+    "description": "充滿懷舊感與朦朧氣息的R&B慢歌"
+  },
+  {
+    "title": "Cool With You",
+    "artist": "NewJeans",
+    "album": "Get Up",
+    "year": 2023,
+    "genre": "R&B, Pop",
+    "energy": 40,
+    "valence": 68,
+    "tempo": 82,
+    "tags": [
+      "chill",
+      "romantic",
+      "smooth",
+      "relaxing"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=BRHG_M5ZYGE",
+    "description": "清涼舒適的夏日R&B情歌"
+  },
+  {
+    "title": "Bubble Gum",
+    "artist": "NewJeans",
+    "album": "How Sweet",
+    "year": 2024,
+    "genre": "Pop, R&B",
+    "energy": 62,
+    "valence": 86,
+    "tempo": 100,
+    "tags": [
+      "sweet",
+      "playful",
+      "fun",
+      "cute"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=uKA24lrD5Bs",
+    "description": "充滿泡泡糖甜蜜感的輕快流行歌曲"
+  },
+  {
+    "title": "How Sweet",
+    "artist": "NewJeans",
+    "album": "How Sweet",
     "year": 2024,
     "genre": "Pop, Electronic",
-    "energy": 88,
-    "valence": 90,
-    "tempo": 125,
-    "tags": ["happy", "bubbly", "fun", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "充滿歡樂節慶氣氛與滿滿正能量的輕快流行樂"
+    "energy": 68,
+    "valence": 78,
+    "tempo": 104,
+    "tags": [
+      "sweet",
+      "upbeat",
+      "catchy",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Ei3ILLqLzLg",
+    "description": "充滿糖果般甜蜜的律動流行舞曲"
   },
   {
-    "title": "Fast Forward",
-    "artist": "JEON SOMI",
-    "album": "GAME PLAN",
+    "title": "Magnetic",
+    "artist": "ILLIT",
+    "album": "SUPER REAL ME",
+    "year": 2024,
+    "genre": "Pop, Electronic",
+    "energy": 68,
+    "valence": 82,
+    "tempo": 108,
+    "tags": [
+      "sweet",
+      "fresh",
+      "dreamy",
+      "cute"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=wEmQ6f72gxE",
+    "description": "ILLIT出道曲，充滿少女感與磁力的清新流行歌曲"
+  },
+  {
+    "title": "Armageddon",
+    "artist": "aespa",
+    "album": "Armageddon",
+    "year": 2024,
+    "genre": "Electronic, Rock",
+    "energy": 92,
+    "valence": 60,
+    "tempo": 138,
+    "tags": [
+      "epic",
+      "intense",
+      "futuristic",
+      "powerful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=4MIbS0WQhZ4",
+    "description": "史詩級未來感的強勁搖滾電音歌曲"
+  },
+  {
+    "title": "SPOT!",
+    "artist": "ZICO ft. Jennie",
+    "album": "SPOT!",
+    "year": 2024,
+    "genre": "Hip Hop, Pop",
+    "energy": 80,
+    "valence": 85,
+    "tempo": 120,
+    "tags": [
+      "fun",
+      "catchy",
+      "playful",
+      "summer"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=c2tIdBTN9uE",
+    "description": "充滿夏日氣息的爽朗嘻哈流行歌曲"
+  },
+  {
+    "title": "Crush (with. 지코)",
+    "artist": "IVE",
+    "album": "IVE SWITCH",
+    "year": 2024,
+    "genre": "Pop, Electronic",
+    "energy": 80,
+    "valence": 78,
+    "tempo": 122,
+    "tags": [
+      "fresh",
+      "upbeat",
+      "fun",
+      "summer"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=UDajsSdZMbw",
+    "description": "充滿清爽夏日感的流行舞曲"
+  },
+  {
+    "title": "Chk Chk Boom",
+    "artist": "Stray Kids",
+    "album": "ATE",
+    "year": 2024,
+    "genre": "Hip Hop, Electronic",
+    "energy": 93,
+    "valence": 73,
+    "tempo": 142,
+    "tags": [
+      "explosive",
+      "intense",
+      "powerful",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=LLCP6FIJFOM",
+    "description": "爆發力十足的Stray Kids最新強勁代表作"
+  },
+  {
+    "title": "UNFORGIVEN",
+    "artist": "LE SSERAFIM ft. Nile Rodgers",
+    "album": "UNFORGIVEN",
     "year": 2023,
-    "genre": "Electronic, Dance",
-    "energy": 90,
+    "genre": "Pop, Electronic",
+    "energy": 83,
     "valence": 65,
-    "tempo": 125,
-    "tags": ["club", "trendy", "vogue", "dance"],
-    "youtube_url": "https://www.youtube.com/watch?v=T_s_7aHn_5Q",
-    "description": "完美駕馭 Tecktonik 舞步的洗腦復古電音舞曲"
+    "tempo": 128,
+    "tags": [
+      "fierce",
+      "powerful",
+      "dark",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=oIREnQTFfRU",
+    "description": "帶有暗黑美學的強勢電音舞曲"
   },
   {
-    "title": "Guilty",
-    "artist": "TAEMIN",
-    "album": "Guilty",
+    "title": "Slow Dancing",
+    "artist": "V (BTS)",
+    "album": "Layover",
+    "year": 2023,
+    "genre": "R&B, Pop",
+    "energy": 38,
+    "valence": 65,
+    "tempo": 80,
+    "tags": [
+      "romantic",
+      "dreamy",
+      "smooth",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=YiTTJ5kLAog",
+    "description": "V個人專輯中慵懶浪漫的R&B情歌"
+  },
+  {
+    "title": "Rainy Days",
+    "artist": "V (BTS)",
+    "album": "Layover",
+    "year": 2023,
+    "genre": "R&B, Soul",
+    "energy": 30,
+    "valence": 45,
+    "tempo": 72,
+    "tags": [
+      "melancholic",
+      "rainy",
+      "emotional",
+      "soulful"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=rMVA0mK6Jhk",
+    "description": "適合雨天靜靜聆聽的憂鬱靈魂樂歌曲"
+  },
+  {
+    "title": "Like Crazy",
+    "artist": "Jimin (BTS)",
+    "album": "FACE",
     "year": 2023,
     "genre": "R&B, Pop",
     "energy": 65,
-    "valence": 45,
-    "tempo": 105,
-    "tags": ["sensual", "artistic", "dark", "smooth"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "充滿致命性感誘惑力與極致藝術感的個人作品"
+    "valence": 60,
+    "tempo": 100,
+    "tags": [
+      "emotional",
+      "dreamy",
+      "romantic",
+      "introspective"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=J6U9VM0TtDs",
+    "description": "帶有夢幻迷失感的個人情感R&B歌曲"
   },
   {
-    "title": "Good & Great",
-    "artist": "KEY",
-    "album": "Good & Great",
+    "title": "Vibe",
+    "artist": "TAEYANG ft. Jimin",
+    "album": "Vibe",
     "year": 2023,
-    "genre": "Pop, Disco",
-    "energy": 85,
-    "valence": 88,
-    "tempo": 115,
-    "tags": ["uplifting", "funky", "relatable", "happy"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "為廣大上班族加油打氣，節奏輕快活潑的復古舞曲"
-  },
-  {
-    "title": "Popcorn",
-    "artist": "D.O.",
-    "album": "Blossom",
-    "year": 2024,
-    "genre": "Pop, Acoustic",
+    "genre": "R&B, Hip Hop",
     "energy": 60,
-    "valence": 85,
-    "tempo": 105,
-    "tags": ["sweet", "light", "happy", "vocal"],
-    "youtube_url": "https://www.youtube.com/watch?v=zTfN-FHYD2E",
-    "description": "如同爆米花般輕盈甜蜜，展現溫柔嗓音的清新之作"
+    "valence": 70,
+    "tempo": 96,
+    "tags": [
+      "smooth",
+      "groovy",
+      "cool",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=hGHkc-AhFAY",
+    "description": "充滿律動感的成熟R&B歌曲"
   },
   {
-    "title": "Fighting (feat. Lee Young Ji)",
-    "artist": "BSS (SEVENTEEN)",
-    "album": "SECOND WIND",
+    "title": "Accidenthally",
+    "artist": "IVE",
+    "album": "IVE SWITCH",
+    "year": 2024,
+    "genre": "Pop, R&B",
+    "energy": 58,
+    "valence": 70,
+    "tempo": 94,
+    "tags": [
+      "smooth",
+      "romantic",
+      "dreamy",
+      "chill"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=5B5G7GiWPGQ",
+    "description": "帶有偶然相遇感的浪漫慢節奏R&B歌曲"
+  },
+  {
+    "title": "Socially Awkward",
+    "artist": "The Rose",
+    "album": "DUAL",
     "year": 2023,
-    "genre": "Pop, Funk",
-    "energy": 98,
-    "valence": 95,
-    "tempo": 130,
-    "tags": ["motivating", "hyper", "happy", "energetic"],
-    "youtube_url": "https://www.youtube.com/watch?v=1F_sXm712bM",
-    "description": "國民級別的超強應援神曲，一聽就立刻充滿動力"
+    "genre": "Indie Pop, Rock",
+    "energy": 60,
+    "valence": 55,
+    "tempo": 98,
+    "tags": [
+      "indie",
+      "emotional",
+      "introspective",
+      "melodic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=VBCvLRJYaHo",
+    "description": "帶有獨立樂隊風格的內省情感搖滾歌曲"
+  },
+  {
+    "title": "Drama",
+    "artist": "aespa",
+    "album": "Drama",
+    "year": 2023,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 72,
+    "tempo": 124,
+    "tags": [
+      "theatrical",
+      "powerful",
+      "catchy",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=3CvJKTChsl4",
+    "description": "充滿戲劇張力的流行電音舞曲"
+  },
+  {
+    "title": "BATTER UP",
+    "artist": "BABYMONSTER",
+    "album": "BATTER UP",
+    "year": 2023,
+    "genre": "Hip Hop, Electronic",
+    "energy": 90,
+    "valence": 72,
+    "tempo": 138,
+    "tags": [
+      "powerful",
+      "fierce",
+      "energetic",
+      "debut"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=olDWm2veCrM",
+    "description": "BABYMONSTER出道曲，融合強勁嘻哈與電音，創下K-pop出道MV最快破億記錄"
+  },
+  {
+    "title": "Stuck In The Middle",
+    "artist": "BABYMONSTER",
+    "album": "Stuck In The Middle",
+    "year": 2024,
+    "genre": "Ballad, Pop",
+    "energy": 30,
+    "valence": 40,
+    "tempo": 72,
+    "tags": [
+      "emotional",
+      "ballad",
+      "soft",
+      "melancholic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=GsV1i0QHi-o",
+    "description": "展現BABYMONSTER細膩唱功的溫柔情感抒情曲"
+  },
+  {
+    "title": "SHEESH",
+    "artist": "BABYMONSTER",
+    "album": "BABYMONS7ER",
+    "year": 2024,
+    "genre": "Hip Hop, Electronic",
+    "energy": 88,
+    "valence": 68,
+    "tempo": 135,
+    "tags": [
+      "fierce",
+      "powerful",
+      "bold",
+      "intense"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=2wA_b6YHjqQ",
+    "description": "融合巴洛克鋼琴旋律的強勢嘻哈出道EP主打曲"
+  },
+  {
+    "title": "LIKE THAT",
+    "artist": "BABYMONSTER",
+    "album": "BABYMONS7ER",
+    "year": 2024,
+    "genre": "R&B, Pop",
+    "energy": 62,
+    "valence": 72,
+    "tempo": 100,
+    "tags": [
+      "smooth",
+      "melodic",
+      "groove",
+      "stylish"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=M8r3x4Re8-I",
+    "description": "帶有流暢R&B旋律的成熟抒情歌曲，展現不同風格面貌"
+  },
+  {
+    "title": "DRIP",
+    "artist": "BABYMONSTER",
+    "album": "DRIP",
+    "year": 2024,
+    "genre": "Hip Hop, Electronic",
+    "energy": 91,
+    "valence": 65,
+    "tempo": 140,
+    "tags": [
+      "intense",
+      "powerful",
+      "rap",
+      "swagger"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Zp-Jhuhq0bQ",
+    "description": "BABYMONSTER首張正規專輯主打曲，強勁說唱與電音交織的代表作"
+  },
+  {
+    "title": "CLIK CLAK",
+    "artist": "BABYMONSTER",
+    "album": "DRIP",
+    "year": 2024,
+    "genre": "Hip Hop, Electronic",
+    "energy": 87,
+    "valence": 70,
+    "tempo": 132,
+    "tags": [
+      "energetic",
+      "confident",
+      "fierce",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=o0oW3lPoOXM",
+    "description": "與DRIP並列的雙主打曲之一，節奏感爆發的強勁舞曲"
+  },
+  {
+    "title": "FOREVER",
+    "artist": "BABYMONSTER",
+    "album": "DRIP",
+    "year": 2024,
+    "genre": "Pop, Ballad",
+    "energy": 42,
+    "valence": 65,
+    "tempo": 84,
+    "tags": [
+      "emotional",
+      "heartfelt",
+      "melodic",
+      "sweet"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=eJCHKjt0MPw",
+    "description": "展現溫柔情感面的抒情流行歌曲"
+  },
+  {
+    "title": "HOT SAUCE",
+    "artist": "BABYMONSTER",
+    "album": "HOT SAUCE",
+    "year": 2025,
+    "genre": "Funk, Pop",
+    "energy": 80,
+    "valence": 78,
+    "tempo": 118,
+    "tags": [
+      "retro",
+      "funky",
+      "groovy",
+      "upbeat"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=xn8mQqz2xmM",
+    "description": "帶有復古Funk氣息的律動感單曲"
+  },
+  {
+    "title": "We Go Up",
+    "artist": "BABYMONSTER",
+    "album": "We Go Up",
+    "year": 2025,
+    "genre": "Electronic, Pop",
+    "energy": 84,
+    "valence": 80,
+    "tempo": 128,
+    "tags": [
+      "uplifting",
+      "energetic",
+      "anthemic",
+      "empowering"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=wlHwjkYpSr0",
+    "description": "充滿向上能量的EDM舞曲，2025年第二張迷你專輯主打"
+  },
+  {
+    "title": "The Chase",
+    "artist": "Hearts2Hearts",
+    "album": "The Chase",
+    "year": 2025,
+    "genre": "Pop, Electronic",
+    "energy": 80,
+    "valence": 76,
+    "tempo": 124,
+    "tags": [
+      "fresh",
+      "energetic",
+      "confident",
+      "debut"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=kxUA2wwYiME",
+    "description": "SM娛樂新女團Hearts2Hearts出道曲，充滿追逐感與初生之犢氣場"
+  },
+  {
+    "title": "Butterflies",
+    "artist": "Hearts2Hearts",
+    "album": "The Chase",
+    "year": 2025,
+    "genre": "Pop, R&B",
+    "energy": 45,
+    "valence": 72,
+    "tempo": 88,
+    "tags": [
+      "sweet",
+      "dreamy",
+      "gentle",
+      "romantic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=hJ9Wp3PO3c8",
+    "description": "The Chase出道單曲的B面，帶有蝴蝶意象的夢幻抒情曲"
+  },
+  {
+    "title": "Style",
+    "artist": "Hearts2Hearts",
+    "album": "Style",
+    "year": 2025,
+    "genre": "Pop, Electronic",
+    "energy": 75,
+    "valence": 80,
+    "tempo": 116,
+    "tags": [
+      "stylish",
+      "cool",
+      "upbeat",
+      "catchy"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=n7kFRxFIPrI",
+    "description": "展現時尚自信氣質的數位單曲"
+  },
+  {
+    "title": "Pretty Please",
+    "artist": "Hearts2Hearts",
+    "album": "Focus",
+    "year": 2025,
+    "genre": "Pop, R&B",
+    "energy": 55,
+    "valence": 78,
+    "tempo": 96,
+    "tags": [
+      "sweet",
+      "charming",
+      "smooth",
+      "romantic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=ufwB9Uja_wM",
+    "description": "Focus迷你專輯先行曲，甜蜜撒嬌感的R&B流行歌曲"
+  },
+  {
+    "title": "Focus",
+    "artist": "Hearts2Hearts",
+    "album": "Focus",
+    "year": 2025,
+    "genre": "Pop, Electronic",
+    "energy": 78,
+    "valence": 74,
+    "tempo": 120,
+    "tags": [
+      "intense",
+      "focused",
+      "powerful",
+      "dance"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=Ur7aK4FvK-U",
+    "description": "H2H首張迷你專輯主打曲，展現專注與爆發力的流行舞曲"
+  },
+  {
+    "title": "Rude!",
+    "artist": "Hearts2Hearts",
+    "album": "Rude!",
+    "year": 2026,
+    "genre": "Pop, Electronic",
+    "energy": 82,
+    "valence": 68,
+    "tempo": 126,
+    "tags": [
+      "bold",
+      "edgy",
+      "confident",
+      "energetic"
+    ],
+    "youtube_url": "https://www.youtube.com/watch?v=F7sGJVUrkjQ",
+    "description": "2026年最新回歸作，帶有大膽挑釁氣息的流行電音歌曲"
   }
 ]
