@@ -77,9 +77,9 @@ class AIExplainer:
             text = ""
             if self.client:
                 try:
-                    # Using gemini-1.5-flash for maximum stability
+                    # Using the latest gemini-2.5-flash
                     resp = self.client.models.generate_content(
-                        model='gemini-1.5-flash',
+                        model='gemini-2.5-flash',
                         contents=[{'parts': [{'text': prompt}]}]
                     )
                     text = resp.text.strip()
