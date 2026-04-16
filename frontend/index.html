@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodling — Your Musical Elf</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="navigation__container">
+            <h1 class="brand__title">Moodling</h1>
+            <div class="navigation__menu" style="display: flex; gap: 2.5rem;">
+                <a href="/analytics" class="nav-link">Analytics</a>
+                <a href="#history" class="nav-link">History</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__container">
+                <h1 class="hero__title">Shape your mood with music.</h1>
+                <p class="hero__description">
+                    Meet Moodling, your little music guide for every mood :)
+                </p>
+            </div>
+        </section>
+
+        <!-- Recommendation Form -->
+        <section class="recommendation">
+            <div class="recommendation__container">
+                <form id="recommendationForm" class="form">
+                    <!-- Mood -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            How do you feel today?
+                            <span class="label__value" id="moodValue">5</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="mood" name="mood" min="1" max="10" value="5" class="slider">
+                            <div class="slider-hints">
+                                <span>1: Sad</span>
+                                <span>10: Happy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stress -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Stress level?
+                            <span class="label__value" id="stressValue">5</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="stress" name="stress" min="1" max="10" value="5" class="slider">
+                            <div class="slider-hints">
+                                <span>1: Chill</span>
+                                <span>10: Busy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energy -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Energy state?
+                            <span class="label__value" id="fatigueValue">5</span>
+                        </label>
+                        <div class="slider-container">
+                            <input type="range" id="fatigue" name="fatigue" min="1" max="10" value="5" class="slider">
+                            <div class="slider-hints">
+                                <span>1: Tired</span>
+                                <span>10: Energetic</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environment -->
+                    <div class="form-group">
+                        <label class="form-label">The Atmosphere</label>
+                        <div class="radio-group" style="display: flex; gap: 1rem;">
+                            <label class="radio-option" style="flex: 1;">
+                                <input type="radio" name="weather" value="sunny" checked>
+                                <span class="radio-card">Sunny</span>
+                            </label>
+                            <label class="radio-option" style="flex: 1;">
+                                <input type="radio" name="weather" value="cloudy">
+                                <span class="radio-card">Cloudy</span>
+                            </label>
+                            <label class="radio-option" style="flex: 1;">
+                                <input type="radio" name="weather" value="rainy">
+                                <span class="radio-card">Rainy</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Time -->
+                    <div class="form-group">
+                        <label class="form-label">When?</label>
+                        <select name="time_preference" class="select-field">
+                            <option value="morning">Morning</option>
+                            <option value="afternoon" selected>Afternoon</option>
+                            <option value="evening">Evening</option>
+                            <option value="night">Night</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="form-actions">
+                        <button type="submit" class="submit-button" id="submitButton">
+                            Ask Moodling
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Loading -->
+        <div id="loadingOverlay" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem;">
+            <dotlottie-wc
+                src="https://lottie.host/699f7102-dda0-43e6-86db-ff961b5f49d8/J5AXGs1lJh.lottie"
+                style="width: 270px; height: 220px;" 
+                autoplay
+                loop
+            ></dotlottie-wc>
+            Moodling is thinking...
+        </div>
+
+        <!-- Results Section -->
+        <section class="results" id="resultsSection" style="display: none;">
+            <div class="results__container">
+                <h2 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 4rem; text-align: center;">Curated Selection</h2>
+                <div class="results-grid" id="resultsGrid" style="flex-direction: column; gap: 2rem;">
+                    <!-- Dynamic songs will now contain internal explanations -->
+                </div>
+            </div>
+        </section>
+<!-- History Section -->
+<section class="results" id="history" style="background: #fdfcfb; padding-top: 4rem;">
+    <div class="results__container">
+        <div class="history-header">
+            <h2 style="font-family: var(--font-serif); font-size: 2rem;">Previous Memories.</h2>
+            <button id="clearHistoryBtn" class="clear-all-btn">Clear All</button>
+        </div>
+        <div id="historyList" class="results-grid">
+            <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">No history yet. Let's create some memories!</p>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Moodling Project NCCU.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

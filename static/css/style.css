@@ -1,0 +1,498 @@
+/* ==========================================================================
+   TuneFlow - Editorial Minimalist Redesign
+   Focus: Warm, Artistic, Clean, and Content-First
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --font-serif: 'DM Serif Display', serif;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Palette: Warm & Organic */
+  --bg-color: #fcfaf7;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --accent-color: #333333;
+  --border-color: #e5e0d8;
+  --card-bg: #ffffff;
+  
+  --space-xl: 5rem;
+  --space-lg: 3rem;
+  --container-width: 900px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.navigation {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navigation__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.brand__title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.navigation__menu {
+  display: flex;
+  gap: 3.5rem; /* 確保 Home 和 Refresh/History 之間有足夠間隔 */
+  align-items: baseline;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+  padding: var(--space-xl) 1.5rem;
+  text-align: center;
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 10vw, 5rem);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.hero__description {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   FORM
+   ========================================================================== */
+.recommendation__container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+.form {
+  background: var(--card-bg);
+  padding: 3rem;
+  border: 1px solid var(--border-color);
+}
+
+.form-group {
+  margin-bottom: 3rem;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.label__value {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-left: 1rem;
+}
+
+/* Custom Sliders */
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--border-color);
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--text-main);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio-option {
+  flex: 1;
+}
+
+.radio-option input { display: none; }
+
+.radio-card {
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background: white;
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.radio-option input:checked + .radio-card {
+  background: var(--text-main);
+  color: white;
+  border-color: var(--text-main);
+}
+
+.select-field {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  background: white;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.submit-button {
+  width: 100%;
+  background: var(--text-main);
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  background: #000;
+}
+
+/* ==========================================================================
+   RESULTS - VERTICAL LIST
+   ========================================================================== */
+.results {
+  background: white;
+  padding: 6rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.results__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.results-grid {
+  display: flex;
+  flex-direction: column; /* Vertical Layout */
+  gap: 0;
+}
+
+.song-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: transform 0.3s;
+}
+
+.song-card:hover {
+  transform: translateX(10px);
+}
+
+.song-card__rank {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-muted);
+}
+
+.song-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.song-card__artist {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.song-card__play {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--text-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: all 0.3s;
+}
+
+.song-card__play:hover {
+  background: var(--text-main);
+  color: white;
+}
+
+/* ==========================================================================
+   CURATION LOGIC - FULLY DYNAMIC HEIGHT
+   ========================================================================== */
+.explanations {
+  padding: 6rem 1.5rem;
+  background: #fdfcfb;
+  display: block;
+  height: auto;
+  min-height: 200px;
+  overflow: visible;
+}
+
+.explanations .results__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  height: auto;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   MOODLING MASCOT & AVATAR
+   ========================================================================== */
+.moodling-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 2.5rem;
+  width: auto;
+  height: auto;
+  margin-top: 0.5rem; /* 微調以對齊標題第一行 */
+}
+
+.explanation-card {
+  margin-bottom: 4rem;
+  padding: 3rem;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start; /* 改為頂部對齊 */
+}
+
+.explanation-content {
+  flex: 1;
+}
+
+/* ==========================================================================
+   ANALYTICS SYNC
+   ========================================================================== */
+.analytics-hero {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: white;
+  padding: 2.5rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.stat-card__value {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.development-notice {
+  margin-top: 4rem;
+  padding: 4rem;
+  background: #fdfcfb;
+  border: 1px dashed var(--border-color);
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: var(--text-main);
+  color: white;
+  font-size: 0.8rem;
+  margin: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   FORM ENHANCEMENTS
+   ========================================================================== */
+.slider-container {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.slider-hints {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   WHY BUTTON & TOGGLE
+   ========================================================================== */
+.why-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--text-main);
+  background: transparent;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.why-button:hover {
+  background: var(--text-main);
+  color: white;
+}
+
+.explanation-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fdfcfb;
+}
+
+.explanation-wrapper.open {
+  max-height: 1000px; /* 充分的高度以容納長文本 */
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+.clear-all-btn {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: #ff4d4d;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.clear-all-btn:hover {
+  border-bottom-color: #ff4d4d;
+}
+
+.delete-item-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.delete-item-btn:hover {
+  color: #ff4d4d;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  padding: 4rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer__container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .song-card {
+    grid-template-columns: 50px 1fr;
+  }
+  .song-card__play {
+    grid-column: 2;
+    margin-top: 1rem;
+  }
+}
