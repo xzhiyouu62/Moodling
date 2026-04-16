@@ -81,27 +81,33 @@ class AIExplainer:
             fatigue = state.get('fatigue', 5)
 
             prompt = f"""
-            你是一位專業的音樂策展小精靈 Moodling，擅長從音樂心理學角度解釋選曲邏輯。
-            
-            用戶狀態：心情 {mood}/10, 壓力 {stress}/10, 疲勞 {fatigue}/10。
-            推薦歌曲：{song['artist']} - 《{song['title']}》
-            歌曲特徵：能量指數 {energy}/100, 情感愉悅度 {valence}/100, 風格標籤 [{tags}]。
-            
-            任務：請撰寫一段 80-120 字的「推薦深度解析」。
-            
-            要求：
-            1. 邏輯對接：具體說明為什麼這首歌的 [能量/愉悅度/風格標籤] 能對應 [用戶的心情/壓力/疲勞]。
-            2. 音樂性描述：描述歌曲的聽感（例如：是跳動的貝斯、清冷的鋼琴、還是層層遞進的人聲）如何影響用戶目前的心理。
-            3. 禁止敷衍：絕對不要說「這首歌很適合你」或「希望帶給你力量」。
-            4. 語氣：專業、富有洞察力、且帶有靈性，像是一位資深的電台主持人。
-            5. 直接開始解析，不要任何客套的開場白（如：哎呀、你好）。
+            你是 Moodling，一個對音樂和情緒很有洞察力的音樂小精靈。
+
+            目前狀況：有人現在的心情是 {mood}/10 開心，{stress}/10 壓力，{fatigue}/10 有活力。
+
+            我為他們選擇了 {song['artist']} 的《{song['title']}》。這首歌有 {tags} 的特質，能量程度是 {energy}，情感色調是 {valence}。
+
+            請寫一個詳細、個人化的解釋（80-120字），分析為什麼這首特定的歌曲符合他們此刻的心情狀態。
+
+            重點分析：
+            1. 這首歌的獨特之處（節奏、旋律、演唱風格、樂器編排）
+            2. 這些音樂元素如何針對他們當前的情感需求
+            3. 這首歌現在會對他們產生什麼心理/情感效果
+            4. 要針對這首歌的具體特色，不要用通用描述
+
+            寫作風格：
+            - 像一個真正懂音樂的朋友那樣溫暖對話
+            - 要有深度見解但保持親切
+            - 詳細解釋選擇的「為什麼」
+            - 必須使用繁體中文
+            - 專注於具體的音樂分析，避免空泛讚美
             """
             
             text = ""
             if self.client:
                 try:
                     resp = self.client.models.generate_content(
-                        model='gemini-2.5-flash',
+                        model='models/gemma-3-1b-it',
                         contents=[{'parts': [{'text': prompt}]}],
                         config={
                             'temperature': 0.7, 
@@ -112,9 +118,9 @@ class AIExplainer:
                     text = resp.text.strip()
                 except Exception as e:
                     logger.error(f"AI generation failed: {e}")
-                    text = f"選曲解析：考慮到您的壓力指數({stress}/10)，《{song['title']}》的 {tags} 節奏能與您的心跳共振，透過其 {energy} 水平的能量緩解心理負荷。"
+                    text = f"這首《{song['title']}》有種 {tags} 的感覺，剛好跟你現在的狀態很搭！聽起來會讓心情更順暢一些。"
             else:
-                text = f"選曲分析：基於您的數據，這首歌的 {tags} 氛圍正對接您當下的心理需求。"
+                text = f"《{song['title']}》這首歌的 {tags} 氛圍，感覺很適合你現在的心情呢～"
 
             explanations.append({
                 'song_title': song['title'],
