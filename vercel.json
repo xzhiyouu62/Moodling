@@ -8,28 +8,28 @@
     {
       "src": "static/**",
       "use": "@vercel/static"
-    },
-    {
-      "src": "frontend/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/app.py"
-    },
     {
       "src": "/static/(.*)",
       "dest": "/static/$1"
     },
     {
+      "src": "/api/(.*)",
+      "dest": "backend/app.py"
+    },
+    {
+      "src": "/submit",
+      "dest": "backend/app.py"
+    },
+    {
       "src": "/analytics",
-      "dest": "frontend/analytics.html"
+      "dest": "backend/app.py"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/index.html"
+      "dest": "backend/app.py"
     }
   ]
 }
