@@ -8,6 +8,8 @@ import os
 from datetime import datetime
 import logging
 import google.genai as genai
+import requests
+import urllib.parse
 from dotenv import load_dotenv
 
 # Vercel sets env vars directly, but this helps local dev
@@ -30,29 +32,237 @@ def load_songs():
         logger.error(f"Error loading songs: {e}")
         return []
 
-class SongRecommendationEngine:
-    def __init__(self, songs_data):
-        self.songs = songs_data
+class HybridMusicEngine:
+    def __init__(self):
+        self.lastfm_key = os.getenv('LASTFM_API_KEY')
+        self.lastfm_base_url = 'https://ws.audioscrobbler.com/2.0/'
+        self.itunes_base_url = 'https://itunes.apple.com/search'
 
-    def calculate_score(self, song, state):
-        score = 0
+    def mood_to_tags(self, state):
+        """將用戶情緒轉換為音樂標籤"""
         mood = state.get('mood', 5)
-        if mood >= 8: score += song.get('valence', 50) * 0.02
-        elif mood <= 3: score += (100 - song.get('valence', 50)) * 0.015
-        
-        fatigue = state.get('fatigue', 5)
-        if fatigue >= 7: score += (100 - song.get('energy', 50)) * 0.015
-        else: score += song.get('energy', 50) * 0.015
-
         stress = state.get('stress', 5)
-        if stress >= 7 and 'relaxing' in song.get('tags', []): score += 30
-        
-        return score
+        energy = state.get('fatigue', 5)
+
+        tags = ['korean', 'k-pop']
+
+        # 情緒標籤映射
+        if mood >= 8:
+            tags.extend(['happy', 'upbeat', 'cheerful', 'joyful'])
+        elif mood >= 6:
+            tags.extend(['uplifting', 'positive', 'feel-good'])
+        elif mood <= 3:
+            tags.extend(['sad', 'melancholy', 'emotional', 'ballad'])
+        else:
+            tags.extend(['peaceful', 'calm', 'mellow'])
+
+        # 能量程度標籤
+        if energy >= 8:
+            tags.extend(['energetic', 'dance', 'uplifting', 'powerful'])
+        elif energy >= 6:
+            tags.extend(['upbeat', 'lively'])
+        elif energy <= 3:
+            tags.extend(['chill', 'relaxing', 'ambient', 'soft'])
+        else:
+            tags.extend(['moderate', 'easy-listening'])
+
+        # 壓力程度標籤
+        if stress <= 3:
+            tags.extend(['chill', 'peaceful', 'relaxing'])
+        elif stress >= 7:
+            tags.extend(['intense', 'powerful', 'energetic'])
+
+        return list(set(tags))[:6]  # 去重並限制標籤數量
+
+    def search_lastfm_by_tags(self, tags, limit=20):
+        """使用 Last.fm API 根據標籤搜索音樂"""
+        try:
+            tracks = []
+            seen_tracks = set()  # 避免重複
+
+            # 方法1: 直接搜索 K-pop 和韓國相關標籤
+            kpop_tags = ['k-pop', 'korean', 'kpop']
+            for tag in kpop_tags:
+                if len(tracks) >= limit:
+                    break
+
+                params = {
+                    'method': 'tag.gettoptracks',
+                    'tag': tag,
+                    'api_key': self.lastfm_key,
+                    'format': 'json',
+                    'limit': 50  # 增加獲取數量
+                }
+
+                response = requests.get(self.lastfm_base_url, params=params, timeout=5)
+                if response.status_code == 200:
+                    data = response.json()
+                    if 'tracks' in data and 'track' in data['tracks']:
+                        for track in data['tracks']['track']:
+                            if len(tracks) >= limit:
+                                break
+
+                            artist_name = track.get('artist', {}).get('name', '') if isinstance(track.get('artist'), dict) else str(track.get('artist', ''))
+                            track_name = track.get('name', '')
+                            track_key = f"{artist_name}-{track_name}".lower()
+
+                            # 避免重複並檢查是否為韓國音樂
+                            if track_key not in seen_tracks and self.is_korean_music(artist_name, track_name):
+                                seen_tracks.add(track_key)
+                                tracks.append({
+                                    'name': track_name,
+                                    'artist': artist_name,
+                                    'lastfm_url': track.get('url', ''),
+                                    'playcount': track.get('playcount', 0)
+                                })
+
+            # 方法2: 如果還是不夠，搜索具體韓國藝人
+            if len(tracks) < limit:
+                korean_artists = ['BTS', 'BLACKPINK', 'TWICE', 'Red Velvet', 'IU', 'Stray Kids', 'ITZY', 'aespa']
+
+                for artist in korean_artists:
+                    if len(tracks) >= limit:
+                        break
+
+                    params = {
+                        'method': 'artist.gettoptracks',
+                        'artist': artist,
+                        'api_key': self.lastfm_key,
+                        'format': 'json',
+                        'limit': 10
+                    }
+
+                    response = requests.get(self.lastfm_base_url, params=params, timeout=5)
+                    if response.status_code == 200:
+                        data = response.json()
+                        if 'toptracks' in data and 'track' in data['toptracks']:
+                            for track in data['toptracks']['track']:
+                                if len(tracks) >= limit:
+                                    break
+
+                                track_key = f"{artist}-{track.get('name', '')}".lower()
+                                if track_key not in seen_tracks:
+                                    seen_tracks.add(track_key)
+                                    tracks.append({
+                                        'name': track.get('name', ''),
+                                        'artist': artist,
+                                        'lastfm_url': track.get('url', ''),
+                                        'playcount': track.get('playcount', 0)
+                                    })
+
+            return tracks[:limit]
+
+        except Exception as e:
+            logger.error(f"Last.fm API error: {e}")
+            return []
+
+    def is_korean_music(self, artist, track):
+        """簡單判斷是否為韓國音樂"""
+        korean_indicators = [
+            'bts', 'blackpink', 'twice', 'red velvet', 'girls generation', 'snsd',
+            'exo', 'bigbang', 'iu', 'stray kids', 'itzy', 'aespa', 'newjeans',
+            'seventeen', 'nct', 'mamamoo', 'super junior', 'shinee', 'wonder girls',
+            '방탄소년단', '블랙핑크', '트와이스', '레드벨벳', '소녀시대',
+            '아이유', 'korea', 'k-pop', 'kpop'
+        ]
+
+        search_text = f"{artist} {track}".lower()
+        return any(indicator in search_text for indicator in korean_indicators)
+
+    def enrich_with_itunes(self, tracks):
+        """使用 iTunes API 豐富音樂資料"""
+        enriched = []
+
+        for track in tracks:
+            try:
+                # iTunes 搜索
+                search_term = f"{track['artist']} {track['name']}"
+                params = {
+                    'term': search_term,
+                    'media': 'music',
+                    'entity': 'song',
+                    'limit': 1,
+                    'country': 'KR'  # 韓國地區
+                }
+
+                response = requests.get(self.itunes_base_url, params=params, timeout=5)
+
+                if response.status_code == 200:
+                    data = response.json()
+                    if data.get('results'):
+                        itunes_track = data['results'][0]
+
+                        enriched.append({
+                            'title': track['name'],
+                            'artist': track['artist'],
+                            'album': itunes_track.get('collectionName', 'Unknown Album'),
+                            'year': itunes_track.get('releaseDate', '')[:4] if itunes_track.get('releaseDate') else 'Unknown',
+                            'preview_url': itunes_track.get('previewUrl'),
+                            'youtube_url': itunes_track.get('trackViewUrl'),  # 使用 iTunes 連結
+                            'album_art': itunes_track.get('artworkUrl100'),
+                            'genre': itunes_track.get('primaryGenreName', 'K-Pop'),
+                            'playcount': track.get('playcount', 0)
+                        })
+                    else:
+                        # 如果 iTunes 找不到，使用 Last.fm 數據
+                        enriched.append({
+                            'title': track['name'],
+                            'artist': track['artist'],
+                            'album': 'Unknown Album',
+                            'year': 'Unknown',
+                            'preview_url': None,
+                            'youtube_url': track.get('lastfm_url'),
+                            'album_art': None,
+                            'genre': 'K-Pop',
+                            'playcount': track.get('playcount', 0)
+                        })
+
+            except Exception as e:
+                logger.error(f"iTunes API error for {track['name']}: {e}")
+                enriched.append({
+                    'title': track['name'],
+                    'artist': track['artist'],
+                    'album': 'Unknown Album',
+                    'year': 'Unknown',
+                    'preview_url': None,
+                    'youtube_url': track.get('lastfm_url'),
+                    'album_art': None,
+                    'genre': 'K-Pop',
+                    'playcount': track.get('playcount', 0)
+                })
+
+        return enriched
 
     def recommend(self, state, num=5):
-        scored = [{'song': s, 'score': self.calculate_score(s, state)} for s in self.songs]
-        scored.sort(key=lambda x: x['score'], reverse=True)
-        return [item['song'] for item in scored[:num]]
+        """主要推薦方法"""
+        try:
+            # Step 1: 根據情緒生成標籤
+            tags = self.mood_to_tags(state)
+            logger.info(f"Generated tags for mood: {tags}")
+
+            # Step 2: 使用 Last.fm 搜索
+            lastfm_tracks = self.search_lastfm_by_tags(tags, limit=num*2)
+            logger.info(f"Found {len(lastfm_tracks)} tracks from Last.fm")
+
+            # Step 3: 使用 iTunes 豐富數據
+            enriched_tracks = self.enrich_with_itunes(lastfm_tracks[:num])
+
+            return enriched_tracks
+
+        except Exception as e:
+            logger.error(f"Recommendation error: {e}")
+            # 降級到簡單回應
+            return [{
+                'title': 'Spring Day',
+                'artist': 'BTS',
+                'album': 'You Never Walk Alone',
+                'year': '2017',
+                'preview_url': None,
+                'youtube_url': '#',
+                'album_art': None,
+                'genre': 'K-Pop',
+                'playcount': 0
+            }]
 
 class AIExplainer:
     def __init__(self):
@@ -129,12 +339,42 @@ class AIExplainer:
             })
         return explanations
 
-songs_data = load_songs()
-engine = SongRecommendationEngine(songs_data)
+engine = HybridMusicEngine()
 explainer = AIExplainer()
 
 @app.route('/')
-def index(): return render_template('index.html')
+def index(): 
+    return render_template('index.html', recommendations=None)
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    try:
+        # Get data from standard form instead of JSON
+        state = {
+            'mood': int(request.form.get('mood', 5)),
+            'stress': int(request.form.get('stress', 5)),
+            'fatigue': int(request.form.get('fatigue', 5)),
+            'weather': request.form.get('weather', 'sunny'),
+            'time_preference': request.form.get('time_preference', 'afternoon')
+        }
+        
+        recs = engine.recommend(state)
+        exps = explainer.generate(state, recs)
+        
+        # Combine recs and exps for easier templating
+        combined_results = []
+        for i, song in enumerate(recs):
+            exp = next((e for e in exps if e['song_title'] == song['title']), {'explanation': 'Enjoy this vibe!'})
+            song['explanation'] = exp['explanation']
+            combined_results.append(song)
+            
+        return render_template('index.html', 
+                             recommendations=combined_results, 
+                             user_state=state,
+                             scroll_to_results=True)
+    except Exception as e:
+        logger.error(f"Submit error: {e}")
+        return render_template('index.html', error=str(e))
 
 @app.route('/analytics')
 def analytics(): return render_template('analytics.html')

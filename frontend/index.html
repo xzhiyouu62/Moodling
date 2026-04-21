@@ -3,165 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moodling — Your Musical Elf</title>
+    <title>Moodling — Your K-Pop Mood Engine</title>
     <link rel="icon" type="image/svg+xml" href="/static/music-svgrepo-com.svg">
     <link rel="stylesheet" href="/static/css/style.css">
-    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
+    <!-- Restore Lottie Player -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navigation">
-        <div class="navigation__container">
-            <h1 class="brand__title">Moodling</h1>
-            <div class="navigation__menu" style="display: flex; gap: 2.5rem;">
-                <a href="/analytics" class="nav-link">Analytics</a>
-                <a href="#history" class="nav-link">History</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem;">
+        <dotlottie-player
+            src="https://lottie.host/699f7102-dda0-43e6-86db-ff961b5f49d8/J5AXGs1lJh.lottie"
+            style="width: 270px; height: 220px;"
+            autoplay
+            loop
+        ></dotlottie-player>
+        Moodling is thinking...
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
+    <header class="navigation">
+        <div class="navigation__container">
+            <h1 class="brand__title">Moodling.</h1>
+            <nav class="navigation__menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/analytics" class="nav-link">Insights</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
         <section class="hero">
-            <div class="hero__container">
-                <h1 class="hero__title">Shape your mood with music.</h1>
-                <p class="hero__description">
-                    Meet Moodling, your little music guide for every mood :)
-                </p>
-            </div>
+            <h1 class="hero__title">Curated for your moments.</h1>
+            <p class="hero__description">How are you feeling right now?</p>
         </section>
 
-        <!-- Recommendation Form -->
         <section class="recommendation">
             <div class="recommendation__container">
-                <form id="recommendationForm" class="form">
-                    <!-- Mood -->
+                <form action="/submit" method="POST" id="recommendationForm" class="form" onsubmit="showLoading()">
                     <div class="form-group">
-                        <label class="form-label">
-                            How do you feel today?
-                            <span class="label__value" id="moodValue">5</span>
-                        </label>
+                        <label class="form-label">How do you feel today? <span id="moodValue">{{ user_state.mood if user_state else 5 }}</span></label>
                         <div class="slider-container">
-                            <input type="range" id="mood" name="mood" min="1" max="10" value="5" class="slider">
-                            <div class="slider-hints">
-                                <span>1: Sad</span>
-                                <span>10: Happy</span>
-                            </div>
+                            <input type="range" name="mood" id="mood" min="1" max="10" value="{{ user_state.mood if user_state else 5 }}" class="slider">
+                            <div class="slider-hints"><span>1: Sad</span><span>10: Happy</span></div>
                         </div>
                     </div>
-
-                    <!-- Stress -->
                     <div class="form-group">
-                        <label class="form-label">
-                            Stress level?
-                            <span class="label__value" id="stressValue">5</span>
-                        </label>
+                        <label class="form-label">Stress level? <span id="stressValue">{{ user_state.stress if user_state else 5 }}</span></label>
                         <div class="slider-container">
-                            <input type="range" id="stress" name="stress" min="1" max="10" value="5" class="slider">
-                            <div class="slider-hints">
-                                <span>1: Chill</span>
-                                <span>10: Busy</span>
-                            </div>
+                            <input type="range" name="stress" id="stress" min="1" max="10" value="{{ user_state.stress if user_state else 5 }}" class="slider">
+                            <div class="slider-hints"><span>1: Chill</span><span>10: Busy</span></div>
                         </div>
                     </div>
-
-                    <!-- Energy -->
                     <div class="form-group">
-                        <label class="form-label">
-                            Energy state?
-                            <span class="label__value" id="fatigueValue">5</span>
-                        </label>
+                        <label class="form-label">Energy state? <span id="fatigueValue">{{ user_state.fatigue if user_state else 5 }}</span></label>
                         <div class="slider-container">
-                            <input type="range" id="fatigue" name="fatigue" min="1" max="10" value="5" class="slider">
-                            <div class="slider-hints">
-                                <span>1: Tired</span>
-                                <span>10: Energetic</span>
-                            </div>
+                            <input type="range" name="fatigue" id="fatigue" min="1" max="10" value="{{ user_state.fatigue if user_state else 5 }}" class="slider">
+                            <div class="slider-hints"><span>1: Tired</span><span>10: Energetic</span></div>
                         </div>
                     </div>
-
-                    <!-- Environment -->
                     <div class="form-group">
                         <label class="form-label">The Atmosphere</label>
-                        <div class="radio-group" style="display: flex; gap: 1rem;">
-                            <label class="radio-option" style="flex: 1;">
-                                <input type="radio" name="weather" value="sunny" checked>
-                                <span class="radio-card">Sunny</span>
+                        <div class="radio-group">
+                            {% for w in ['sunny', 'cloudy', 'rainy'] %}
+                            <label class="radio-option">
+                                <input type="radio" name="weather" value="{{ w }}" {{ 'checked' if (user_state and user_state.weather == w) or (not user_state and w == 'sunny') }}>
+                                <span class="radio-card">{{ w|capitalize }}</span>
                             </label>
-                            <label class="radio-option" style="flex: 1;">
-                                <input type="radio" name="weather" value="cloudy">
-                                <span class="radio-card">Cloudy</span>
-                            </label>
-                            <label class="radio-option" style="flex: 1;">
-                                <input type="radio" name="weather" value="rainy">
-                                <span class="radio-card">Rainy</span>
-                            </label>
+                            {% endfor %}
                         </div>
                     </div>
-
-                    <!-- Time -->
                     <div class="form-group">
                         <label class="form-label">When?</label>
                         <select name="time_preference" class="select-field">
-                            <option value="morning">Morning</option>
-                            <option value="afternoon" selected>Afternoon</option>
-                            <option value="evening">Evening</option>
-                            <option value="night">Night</option>
+                            {% for t in ['morning', 'afternoon', 'evening', 'night'] %}
+                            <option value="{{ t }}" {{ 'selected' if user_state and user_state.time_preference == t }}>{{ t|capitalize }}</option>
+                            {% endfor %}
                         </select>
                     </div>
-
-                    <!-- Submit -->
                     <div class="form-actions">
-                        <button type="submit" class="submit-button" id="submitButton">
-                            Ask Moodling
-                        </button>
+                        <button type="submit" class="submit-button">Ask Moodling</button>
                     </div>
                 </form>
             </div>
         </section>
 
-        <!-- Loading -->
-        <div id="loadingOverlay" style="display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 2rem;">
-            <dotlottie-wc
-                src="https://lottie.host/699f7102-dda0-43e6-86db-ff961b5f49d8/J5AXGs1lJh.lottie"
-                style="width: 270px; height: 220px;" 
-                autoplay
-                loop
-            ></dotlottie-wc>
-            Moodling is thinking...
-        </div>
-
-        <!-- Results Section -->
-        <section class="results" id="resultsSection" style="display: none;">
+        {% if recommendations %}
+        <section class="results" id="resultsSection">
             <div class="results__container">
-                <h2 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 4rem; text-align: center;">Curated Selection</h2>
-                <div class="results-grid" id="resultsGrid" style="flex-direction: column; gap: 2rem;">
-                    <!-- Dynamic songs will now contain internal explanations -->
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <dotlottie-player
+                        src="https://lottie.host/699f7102-dda0-43e6-86db-ff961b5f49d8/J5AXGs1lJh.lottie"
+                        style="width: 120px; height: 120px; margin: 0 auto;"
+                        autoplay
+                        loop
+                    ></dotlottie-player>
+                    <h2 style="font-family: var(--font-serif); font-size: 2.5rem; margin-top: 1rem;">Curated Selection</h2>
+                </div>
+                <div class="results-grid" id="resultsGrid">
+                    {% for song in recommendations %}
+                    <div class="song-card-container">
+                        <details class="explanation-details">
+                            <summary class="song-rank-row">
+                                <div class="rank-number">{{ "%02d"|format(loop.index) }}</div>
+                                <div class="song-card__visuals">
+                                    {% if song.album_art %}<img src="{{ song.album_art }}" class="album-art">{% else %}<div class="album-art-placeholder">{{ loop.index }}</div>{% endif %}
+                                </div>
+                                <div class="song-card__info">
+                                    <h3 class="song-card__title">{{ song.title }}</h3>
+                                    <p class="song-card__artist">{{ song.artist }}</p>
+                                    <p class="song-card__details">{{ song.album }} · {{ song.year }}</p>
+                                </div>
+                                <div class="song-card__interactions">
+                                    <div class="song-card__audio-wrapper">
+                                        <span class="interaction-label">Preview</span>
+                                        {% if song.preview_url %}
+                                        <div class="custom-audio-player" onclick="event.stopPropagation()">
+                                            <button type="button" class="play-pause-btn" onclick="togglePlay(this)">
+                                                <svg viewBox="0 0 24 24"><path class="play-icon" d="M8 5v14l11-7z"/></svg>
+                                            </button>
+                                            <div class="audio-progress-container" onclick="seek(event, this)">
+                                                <div class="audio-progress-bar"></div>
+                                            </div>
+                                            <audio class="hidden-audio" src="{{ song.preview_url }}"></audio>
+                                        </div>
+                                        {% else %}<span class="no-preview">No preview</span>{% endif %}
+                                    </div>
+                                    <div class="song-card__actions" onclick="event.stopPropagation()">
+                                        {% if song.youtube_url and song.youtube_url != '#' %}
+                                        <a href="{{ song.youtube_url }}" target="_blank" class="action-btn-link">Full Song ↗</a>
+                                        {% endif %}
+                                        <span class="modern-why" onclick="toggleNoteLabel(this)">Why?</span>
+                                    </div>
+                                </div>
+                            </summary>
+                            <div class="explanation-drawer">
+                                <div class="chat-container">
+                                    <div class="moodling-mascot">
+                                        <dotlottie-player src="https://lottie.host/699f7102-dda0-43e6-86db-ff961b5f49d8/J5AXGs1lJh.lottie" style="width: 60px; height: 60px" autoplay loop></dotlottie-player>
+                                    </div>
+                                    <div class="speech-bubble">
+                                        <p class="explanation-text">{{ song.explanation }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
-<!-- History Section -->
-<section class="results" id="history" style="background: #fdfcfb; padding-top: 4rem;">
-    <div class="results__container">
-        <div class="history-header">
-            <h2 style="font-family: var(--font-serif); font-size: 2rem;">Previous Memories.</h2>
-            <button id="clearHistoryBtn" class="clear-all-btn">Clear All</button>
-        </div>
-        <div id="historyList" class="results-grid">
-            <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">No history yet. Let's create some memories!</p>
-        </div>
-    </div>
-</section>
+        {% endif %}
+
+        <!-- History Section -->
+        <section class="results" id="historySection" style="background: #fdfcfb; border-top: 1px solid var(--border-color);">
+            <div class="results__container">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3rem;">
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem;">Previous Memories.</h2>
+                    <button onclick="clearHistory()" class="clear-all-btn" style="color: #ff4d4d; background: none; border: none; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 600;">Clear All</button>
+                </div>
+                <div id="historyList" class="results-grid"></div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer__container">
             <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Moodling Project NCCU.</p>
         </div>
     </footer>
 
-    <script src="/static/js/main.js"></script>
+    <script>
+        function showLoading() { document.getElementById('loadingOverlay').style.display = 'flex'; }
+
+        // Slider Updates
+        document.querySelectorAll('.slider').forEach(s => {
+            s.oninput = function() { document.getElementById(this.id + 'Value').innerText = this.value; }
+        });
+
+        // Audio Logic
+        function togglePlay(btn) {
+            const audio = btn.parentElement.querySelector('audio');
+            const icon = btn.querySelector('.play-icon');
+            if (audio.paused) {
+                document.querySelectorAll('audio').forEach(a => {
+                    a.pause();
+                    const otherIcon = a.parentElement.querySelector('.play-icon');
+                    if (otherIcon) otherIcon.setAttribute('d', 'M8 5v14l11-7z');
+                });
+                audio.play();
+                icon.setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+            } else {
+                audio.pause();
+                icon.setAttribute('d', 'M8 5v14l11-7z');
+            }
+        }
+
+        function seek(e, container) {
+            const audio = container.parentElement.querySelector('audio');
+            const rect = container.getBoundingClientRect();
+            audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+        }
+
+        document.querySelectorAll('.hidden-audio').forEach(audio => {
+            audio.ontimeupdate = function() {
+                const bar = this.parentElement.querySelector('.audio-progress-bar');
+                bar.style.width = (this.currentTime / this.duration) * 100 + '%';
+            };
+        });
+
+        function toggleNoteLabel(btn) {
+            const details = btn.closest('details');
+            setTimeout(() => {
+                btn.textContent = details.open ? 'Close' : 'Why?';
+            }, 10);
+        }
+
+        // History Logic
+        function saveCurrentResults() {
+            {% if recommendations %}
+            const history = JSON.parse(localStorage.getItem('moodling_history') || '[]');
+            const entry = {
+                timestamp: new Date().toLocaleString(),
+                mood: "{{ user_state.mood }}",
+                top_song: "{{ recommendations[0].title }}",
+                html: document.getElementById('resultsGrid').innerHTML
+            };
+            if (history.length === 0 || history[0].top_song !== entry.top_song) {
+                history.unshift(entry);
+                localStorage.setItem('moodling_history', JSON.stringify(history.slice(0, 10)));
+            }
+            {% endif %}
+        }
+
+        function loadHistory() {
+            const list = document.getElementById('historyList');
+            const history = JSON.parse(localStorage.getItem('moodling_history') || '[]');
+            if (history.length === 0) {
+                list.innerHTML = '<p style="color: var(--text-muted); font-style: italic;">No memories yet.</p>';
+                return;
+            }
+            list.innerHTML = history.map((item, idx) => `
+                <div class="song-card-container" style="padding: 1.5rem 0; border-bottom: 1px solid #eee; cursor: pointer;" onclick="restoreHistory(${idx})">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="font-family: var(--font-serif); font-size: 1.2rem; margin: 0;">Memory #${history.length - idx}</h3>
+                            <p style="font-size: 0.85rem; color: #666; margin: 0.2rem 0;">Mood: ${item.mood} — ${item.top_song} (${item.timestamp})</p>
+                        </div>
+                        <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">View Result ↗</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function restoreHistory(idx) {
+            const history = JSON.parse(localStorage.getItem('moodling_history') || '[]');
+            document.getElementById('resultsGrid').innerHTML = history[idx].html;
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            // Re-bind events to new HTML
+            document.querySelectorAll('.hidden-audio').forEach(audio => {
+                audio.ontimeupdate = function() {
+                    this.parentElement.querySelector('.audio-progress-bar').style.width = (this.currentTime / this.duration) * 100 + '%';
+                };
+            });
+        }
+
+        function clearHistory() {
+            if(confirm('Clear all memories?')) {
+                localStorage.removeItem('moodling_history');
+                loadHistory();
+            }
+        }
+
+        window.onload = function() {
+            saveCurrentResults();
+            loadHistory();
+            {% if scroll_to_results %}
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            {% endif %}
+        };
+    </script>
+
+    <style>
+        .explanation-details summary { list-style: none; cursor: pointer; outline: none; }
+        .explanation-details summary::-webkit-details-marker { display: none; }
+        .explanation-drawer { background: #fdfcfb; border-top: 1px solid #f0f0f0; padding: 2rem 0 2rem 240px; }
+    </style>
 </body>
 </html>

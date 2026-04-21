@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moodling</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, #root { height: 100%; }
+    body { background: #fdfaf6; overflow: hidden; }
+    * { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    input[type=range] {
+      -webkit-appearance: none; appearance: none;
+      background: transparent; width: 100%; cursor: pointer; outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 13px; height: 13px; border-radius: 0;
+      background: #111; cursor: pointer;
+      transition: transform .15s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input[type=range]::-moz-range-thumb {
+      width: 13px; height: 13px; border-radius: 0;
+      background: #111; border: none; cursor: pointer;
+    }
+    select { -webkit-appearance: none; appearance: none; cursor: pointer; }
+    button { cursor: pointer; font-family: inherit; }
+
+    .page { animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both; }
+    .stagger-1 { animation: fadeUp .4s .05s cubic-bezier(.22,1,.36,1) both; }
+    .stagger-2 { animation: fadeUp .4s .12s cubic-bezier(.22,1,.36,1) both; }
+    .stagger-3 { animation: fadeUp .4s .20s cubic-bezier(.22,1,.36,1) both; }
+    .stagger-4 { animation: fadeUp .4s .28s cubic-bezier(.22,1,.36,1) both; }
+    .stagger-5 { animation: fadeUp .4s .36s cubic-bezier(.22,1,.36,1) both; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #e0dbd4; border-radius: 2px; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+/* ── tokens ── */
+const C = {
+  bg:     '#fdfaf6',
+  paper:  '#f5f0e8',
+  text:   '#111111',
+  muted:  '#7a7570',
+  faint:  '#c8c3bc',
+  border: '#e0dbd4',
+  serif:  '"DM Serif Display", serif',
+  sans:   '"DM Sans", sans-serif',
+};
+
+/* ── data ── */
+const SONGS = [
+  { n:'01', title:'밤편지', roman:'Dear Night',   artist:'IU (아이유)',         meta:'Palette · 2017' },
+  { n:'02', title:'LILAC',  roman:'Lilac',        artist:'IU (아이유)',         meta:'LILAC · 2021'   },
+  { n:'03', title:'봄날',   roman:'Spring Day',   artist:'BTS (방탄소년단)',    meta:'You Never Walk Alone · 2017' },
+];
+const EXPLS = [
+  "IU's gentle piano matches your mood without forcing it anywhere. Her warm soprano holds the moment you're already in.",
+  "Bittersweet and nostalgic — LILAC carries the emotional texture of this hour without pushing you forward.",
+  "A track about patient longing. With your current state, this offers release — it meets you here, then lifts.",
+];
+
+/* ── grain overlay ── */
+function Grain() {
+  return (
+    <svg style={{position:'fixed',inset:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:9999,opacity:.04}} xmlns="http://www.w3.org/2000/svg">
+      <filter id="g">
+        <feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#g)"/>
+    </svg>
+  );
+}
+
+/* ── brand mark ── */
+function BrandMark({ size = 17, style = {} }) {
+  return (
+    <span style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: size, color: C.text, letterSpacing: '-.01em', ...style }}>
+      Moodling.
+    </span>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   HOME PAGE
+───────────────────────────────────────────── */
+function HomePage({ onStart }) {
+  const [hovered, setHovered] = React.useState(false);
+  return (
+    <div className="page" style={{ height: '100%', background: C.bg, display: 'flex', flexDirection: 'column', padding: '32px 48px', fontFamily: C.sans, position: 'relative', overflow: 'hidden' }}>
+      {/* faint background numeral */}
+      <div style={{ position: 'absolute', right: -20, top: '50%', transform: 'translateY(-60%)', fontFamily: C.serif, fontStyle: 'italic', fontSize: 360, color: C.border, lineHeight: 1, pointerEvents: 'none', userSelect: 'none', letterSpacing: '-0.04em' }}>
+        ♪
+      </div>
+
+      {/* top bar */}
+      <div className="stagger-1" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <BrandMark />
+        <div style={{ display: 'flex', gap: 24, alignItems: 'baseline' }}>
+          <span style={{ fontSize: 10, color: C.faint, letterSpacing: '0.10em', textTransform: 'uppercase' }}>Korean Music Guide</span>
+          <span style={{ fontSize: 10, color: C.faint, letterSpacing: '0.08em' }}>01 — 03</span>
+        </div>
+      </div>
+
+      {/* main */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', maxWidth: 640 }}>
+        <div className="stagger-2">
+          <h1 style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: 'clamp(52px, 8vw, 80px)', lineHeight: .93, color: C.text, letterSpacing: '-0.02em', marginBottom: 28, textWrap: 'pretty' }}>
+            Shape your<br/>mood with<br/>music.
+          </h1>
+        </div>
+        <div className="stagger-3" style={{ width: 48, height: 1, background: C.border, marginBottom: 22 }} />
+        <div className="stagger-4" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24 }}>
+          <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.7, fontWeight: 300, maxWidth: 340 }}>
+            Korean music, matched to your moment.<br/>Tell us how you feel — we'll find the right track.
+          </p>
+          <button
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={onStart}
+            style={{ background: 'none', border: 'none', fontFamily: C.serif, fontStyle: 'italic', fontSize: 19, color: C.text, display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0, transition: 'gap .2s', paddingBottom: 2 }}>
+            Begin
+            <span style={{ fontStyle: 'normal', display: 'inline-block', transition: 'transform .2s', transform: hovered ? 'translateX(4px)' : 'none' }}>→</span>
+          </button>
+        </div>
+      </div>
+
+      {/* bottom footer strip */}
+      <div className="stagger-5" style={{ marginTop: 32, paddingTop: 20, borderTop: `1px solid ${C.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <span style={{ fontSize: 11, color: C.faint }}>© 2026 Moodling Project · NCCU</span>
+        <div style={{ display: 'flex', gap: 20 }}>
+          {['Analytics', 'History'].map(l => (
+            <span key={l} style={{ fontSize: 10, color: C.faint, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{l}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   SHARED SIDE PANEL
+───────────────────────────────────────────── */
+function SidePanel({ pageNum, sessionData, onNav }) {
+  return (
+    <div style={{ width: 240, flexShrink: 0, borderRight: `1px solid ${C.border}`, display: 'flex', flexDirection: 'column', padding: '32px 28px', background: C.bg }}>
+      <button onClick={onNav} style={{ background: 'none', border: 'none', textAlign: 'left', padding: 0, marginBottom: 24 }}>
+        <BrandMark />
+      </button>
+      <div style={{ width: '100%', height: 1, background: C.border, marginBottom: 24 }} />
+
+      <div style={{ fontSize: 10, color: C.faint, letterSpacing: '0.10em', textTransform: 'uppercase', marginBottom: 14 }}>
+        {pageNum === '02' ? 'Your session' : 'Session result'}
+      </div>
+
+      {sessionData && (
+        <div style={{ flex: 1 }}>
+          {[['Mood', sessionData.mood + '/10'], ['Stress', sessionData.stress + '/10'], ['Energy', sessionData.energy + '/10']].map(([l, v]) => (
+            <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: `1px solid ${C.border}`, fontSize: 12, color: C.muted }}>
+              <span>{l}</span>
+              <span style={{ fontVariantNumeric: 'tabular-nums', color: C.text }}>{v}</span>
+            </div>
+          ))}
+          <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: `1px solid ${C.border}`, fontSize: 12, color: C.muted }}>
+            <span>Atmosphere</span><span style={{ color: C.text }}>{sessionData.weather}</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', fontSize: 12, color: C.muted }}>
+            <span>Time</span><span style={{ color: C.text }}>{sessionData.time}</span>
+          </div>
+        </div>
+      )}
+
+      {!sessionData && (
+        <p style={{ fontSize: 12, color: C.faint, lineHeight: 1.7, fontWeight: 300 }}>
+          Answer a few questions — Moodling will find the right Korean track for your mood.
+        </p>
+      )}
+
+      <div style={{ marginTop: 'auto', paddingTop: 24 }}>
+        <div style={{ fontSize: 10, color: C.faint, letterSpacing: '0.08em' }}>{pageNum} — 03</div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   QUESTION ROW
+───────────────────────────────────────────── */
+function Question({ num, label, children }) {
+  return (
+    <div style={{ paddingBottom: 32, marginBottom: 32, borderBottom: `1px solid ${C.border}` }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 16 }}>
+        <span style={{ fontSize: 10, color: C.faint, letterSpacing: '0.08em', fontFamily: C.sans, flexShrink: 0, paddingTop: 2 }}>{num}</span>
+        <span style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: 20, color: C.text, lineHeight: 1.1 }}>{label}</span>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+/* ── slider ── */
+function MoodSlider({ value, onChange, lo, hi }) {
+  const pct = ((value - 1) / 9) * 100;
+  return (
+    <div>
+      <div style={{ position: 'relative', paddingBottom: 14 }}>
+        <style>{`.ms::-webkit-slider-thumb{background:#111!important}.ms::-moz-range-thumb{background:#111!important}`}</style>
+        <input type="range" min="1" max="10" value={value} onChange={e => onChange(+e.target.value)} className="ms"
+          style={{ height: 1, background: `linear-gradient(to right,#111 ${pct}%,${C.border} ${pct}%)`, borderRadius: 0 }} />
+        <div style={{ display: 'flex', justifyContent: 'space-between', position: 'absolute', bottom: 0, left: 0, right: 0, fontSize: 10, color: C.faint, letterSpacing: '0.06em', textTransform: 'uppercase', pointerEvents: 'none' }}>
+          <span>{lo}</span>
+          <span style={{ fontSize: 13, color: C.muted, fontVariantNumeric: 'tabular-nums', textTransform: 'none', letterSpacing: 'normal' }}>{value}</span>
+          <span>{hi}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── pill group ── */
+function Pills({ options, value, onChange }) {
+  return (
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      {options.map(o => (
+        <button key={o} onClick={() => onChange(o)}
+          style={{
+            padding: '7px 16px', fontFamily: C.sans, fontSize: 12, letterSpacing: '0.03em',
+            border: `1px solid ${value === o ? C.text : C.border}`,
+            background: value === o ? C.text : 'transparent',
+            color: value === o ? '#fff' : C.muted,
+            transition: 'all .15s',
+          }}>
+          {o}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   FORM PAGE
+───────────────────────────────────────────── */
+function FormPage({ onBack, onSubmit, data, setData }) {
+  const [loading, setLoading] = React.useState(false);
+  const set = k => v => setData(p => ({ ...p, [k]: v }));
+  const submit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => { setLoading(false); onSubmit(); }, 1400);
+  };
+
+  if (loading) return (
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: C.bg, gap: 20 }}>
+      <div style={{ width: 36, height: 36, border: `1px solid ${C.border}`, borderTopColor: C.text, borderRadius: '50%', animation: 'spin .9s linear infinite' }} />
+      <span style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: 20, color: C.text, opacity: .5 }}>Moodling is thinking…</span>
+    </div>
+  );
+
+  return (
+    <div className="page" style={{ height: '100%', display: 'flex', background: C.bg, overflow: 'hidden' }}>
+      <SidePanel pageNum="02" sessionData={null} onNav={onBack} />
+      <div style={{ flex: 1, overflowY: 'auto', padding: '40px 56px 64px' }}>
+        {/* header */}
+        <div style={{ marginBottom: 44 }}>
+          <h2 style={{ fontFamily: C.serif, fontSize: 34, color: C.text, lineHeight: 1.05, letterSpacing: '-0.01em' }}>
+            How are you<br/>feeling right now?
+          </h2>
+          <p style={{ marginTop: 10, fontSize: 13, color: C.muted, fontWeight: 300, lineHeight: 1.65 }}>
+            Answer honestly — Moodling will find the right Korean track for this exact moment.
+          </p>
+        </div>
+
+        <form onSubmit={submit}>
+          <Question num="01" label="How do you feel today?">
+            <MoodSlider value={data.mood} onChange={set('mood')} lo="Sad" hi="Happy" />
+          </Question>
+          <Question num="02" label="What's your stress level?">
+            <MoodSlider value={data.stress} onChange={set('stress')} lo="Chill" hi="Busy" />
+          </Question>
+          <Question num="03" label="How's your energy?">
+            <MoodSlider value={data.energy} onChange={set('energy')} lo="Tired" hi="Energetic" />
+          </Question>
+          <Question num="04" label="The atmosphere outside.">
+            <Pills options={['Sunny', 'Cloudy', 'Rainy', 'Snowy']} value={data.weather} onChange={set('weather')} />
+          </Question>
+          <Question num="05" label="What time is it?">
+            <Pills options={['Morning', 'Afternoon', 'Evening', 'Night']} value={data.time} onChange={set('time')} />
+          </Question>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 8 }}>
+            <button type="submit"
+              style={{ background: C.text, color: '#fff', border: 'none', padding: '14px 36px', fontFamily: C.sans, fontSize: 12, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10, transition: 'opacity .2s' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '.8'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+              Ask Moodling <span style={{ letterSpacing: 0 }}>→</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   RESULTS PAGE
+───────────────────────────────────────────── */
+function ResultsPage({ data, onNew }) {
+  const [open, setOpen] = React.useState(null);
+
+  return (
+    <div className="page" style={{ height: '100%', display: 'flex', background: C.bg, overflow: 'hidden' }}>
+      <SidePanel pageNum="03" sessionData={data} onNav={onNew} />
+      <div style={{ flex: 1, overflowY: 'auto', padding: '40px 56px 64px' }}>
+
+        {/* header */}
+        <div style={{ marginBottom: 44 }}>
+          <div style={{ fontSize: 10, color: C.faint, letterSpacing: '0.10em', textTransform: 'uppercase', marginBottom: 10 }}>
+            {new Date().toLocaleDateString('en', { weekday: 'long', month: 'long', day: 'numeric' })}
+          </div>
+          <h2 style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: 38, color: C.text, lineHeight: 1.0, letterSpacing: '-0.01em' }}>
+            Curated<br/>Selection.
+          </h2>
+          <p style={{ marginTop: 10, fontSize: 13, color: C.muted, fontWeight: 300 }}>
+            3 tracks matched to your mood right now.
+          </p>
+        </div>
+
+        {/* song list */}
+        <div>
+          {SONGS.map((s, i) => (
+            <div key={s.n} style={{ borderBottom: `1px solid ${C.border}`, padding: '24px 0' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '44px 1fr 40px', alignItems: 'center', gap: 0 }}>
+
+                {/* rank */}
+                <span style={{ fontFamily: C.serif, fontStyle: 'italic', fontSize: 22, color: C.faint, lineHeight: 1 }}>{s.n}</span>
+
+                {/* info */}
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: C.serif, fontSize: 26, color: C.text, lineHeight: 1.05 }}>{s.title}</span>
+                    <span style={{ fontFamily: C.sans, fontSize: 11, color: C.faint, letterSpacing: '0.04em', fontStyle: 'italic' }}>{s.roman}</span>
+                  </div>
+                  <div style={{ marginTop: 3, fontSize: 12, color: C.muted }}>{s.artist} · {s.meta}</div>
+                  <button onClick={() => setOpen(open === i ? null : i)}
+                    style={{ marginTop: 10, background: 'none', border: `1px solid ${C.border}`, padding: '4px 12px', fontSize: 11, color: C.muted, letterSpacing: '0.04em', display: 'inline-flex', alignItems: 'center', gap: 5, transition: 'all .15s' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = C.text; e.currentTarget.style.color = C.text; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.muted; }}>
+                    Why this? <span style={{ display: 'inline-block', transition: 'transform .2s', transform: open === i ? 'rotate(180deg)' : 'none' }}>↓</span>
+                  </button>
+                </div>
+
+                {/* play */}
+                <button style={{ width: 38, height: 38, border: `1px solid ${C.border}`, background: 'none', color: C.text, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .15s', flexShrink: 0 }}
+                  onMouseEnter={e => { e.currentTarget.style.background = C.text; e.currentTarget.style.color = '#fff'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = C.text; }}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5l7.5 4.5-7.5 4.5V1.5z"/></svg>
+                </button>
+              </div>
+
+              {/* explanation */}
+              {open === i && (
+                <div style={{ marginTop: 16, paddingLeft: 44, animation: 'fadeIn .25s ease' }}>
+                  <div style={{ padding: '14px 18px', background: C.paper, borderLeft: `2px solid ${C.border}`, fontSize: 13, color: C.muted, lineHeight: 1.8, fontStyle: 'italic', fontFamily: C.serif }}>
+                    "{EXPLS[i]}"
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* footer actions */}
+        <div style={{ marginTop: 44, paddingTop: 32, borderTop: `1px solid ${C.border}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: 11, color: C.faint }}>© 2026 Moodling Project · NCCU</span>
+          <button onClick={onNew}
+            style={{ background: 'none', border: `1px solid ${C.border}`, padding: '8px 20px', fontFamily: C.sans, fontSize: 11, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'all .15s' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = C.text; e.currentTarget.style.color = C.text; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.muted; }}>
+            New session →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   TWEAKS
+───────────────────────────────────────────── */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "bgWarm": true,
+  "grainOn": true
+}/*EDITMODE-END*/;
+
+function TweaksPanel({ open, cfg, onChange }) {
+  if (!open) return null;
+  return (
+    <div style={{ position: 'fixed', bottom: 20, right: 20, background: '#fff', border: `1px solid ${C.border}`, padding: '18px 20px', zIndex: 99999, width: 210, boxShadow: '0 4px 20px rgba(0,0,0,.08)', fontFamily: C.sans }}>
+      <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.faint, marginBottom: 14 }}>Tweaks</div>
+      {[['grainOn', 'Paper grain texture'], ['bgWarm', 'Warm background tint']].map(([k, label]) => (
+        <label key={k} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: C.text, cursor: 'pointer', marginBottom: 10 }}>
+          <input type="checkbox" checked={cfg[k]} onChange={e => onChange({ ...cfg, [k]: e.target.checked })} />
+          {label}
+        </label>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   ROOT
+───────────────────────────────────────────── */
+function App() {
+  const [page, setPage] = React.useState(() => localStorage.getItem('moodling_page') || 'home');
+  const [data, setData] = React.useState({ mood: 5, stress: 5, energy: 5, weather: 'Sunny', time: 'Afternoon' });
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+  const [cfg, setCfg] = React.useState(TWEAK_DEFAULTS);
+  const [key, setKey] = React.useState(0); // re-mount for transition
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('moodling_tw3');
+    if (saved) try { setCfg(JSON.parse(saved)); } catch {}
+    window.addEventListener('message', e => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+  }, []);
+
+  const go = (p) => {
+    setPage(p);
+    setKey(k => k + 1);
+    localStorage.setItem('moodling_page', p);
+  };
+
+  const saveCfg = (next) => {
+    setCfg(next);
+    localStorage.setItem('moodling_tw3', JSON.stringify(next));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: next }, '*');
+  };
+
+  const bgColor = cfg.bgWarm ? '#fdfaf6' : '#ffffff';
+
+  return (
+    <div style={{ height: '100%', background: bgColor, color: C.text, fontFamily: C.sans }}>
+      {cfg.grainOn && <Grain />}
+      <div key={key} style={{ height: '100%' }}>
+        {page === 'home'    && <HomePage onStart={() => go('form')} />}
+        {page === 'form'    && <FormPage onBack={() => go('home')} onSubmit={() => go('results')} data={data} setData={setData} />}
+        {page === 'results' && <ResultsPage data={data} onNew={() => go('home')} />}
+      </div>
+      <TweaksPanel open={tweaksOpen} cfg={cfg} onChange={saveCfg} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

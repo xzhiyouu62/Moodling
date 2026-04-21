@@ -55,7 +55,7 @@ body {
 
 .navigation__menu {
   display: flex;
-  gap: 3.5rem; /* 確保 Home 和 Refresh/History 之間有足夠間隔 */
+  gap: 3.5rem;
   align-items: baseline;
 }
 
@@ -122,13 +122,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.label__value {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-left: 1rem;
-}
-
 /* Custom Sliders */
 .slider {
   -webkit-appearance: none;
@@ -146,10 +139,6 @@ body {
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s;
-}
-
-.slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
 }
 
 .radio-group {
@@ -182,13 +171,19 @@ body {
 
 .select-field {
   width: 100%;
+  padding: 1rem;
   border: 1px solid var(--border-color);
   background: white;
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-family: inherit;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-main);
   outline: none;
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M10.293%203.293L6%207.586%201.707%203.293A1%201%200%2000.293%204.707l5%205a1%201%200%20001.414%200l5-5a1%201%200%2010-1.414-1.414z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
 }
 
 .submit-button {
@@ -201,6 +196,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: all 0.3s;
+  border: none;
+  cursor: pointer;
 }
 
 .submit-button:hover {
@@ -208,291 +205,284 @@ body {
 }
 
 /* ==========================================================================
-   RESULTS - VERTICAL LIST
+   RESULTS - EDITORIAL RANKED LIST
    ========================================================================== */
 .results {
   background: white;
-  padding: 6rem 1.5rem;
+  padding: 8rem 1.5rem;
   border-top: 1px solid var(--border-color);
 }
 
 .results__container {
-  max-width: var(--container-width);
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .results-grid {
   display: flex;
-  flex-direction: column; /* Vertical Layout */
+  flex-direction: column;
   gap: 0;
 }
 
-.song-card {
-  display: grid;
-  grid-template-columns: 80px 1fr auto;
-  align-items: center;
-  padding: 2.5rem 0;
+.song-card-container {
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid var(--border-color);
-  transition: transform 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.song-card:hover {
-  transform: translateX(10px);
+.song-card-container:hover {
+  background-color: #fafaf8;
 }
 
-.song-card__rank {
+.song-rank-row {
+  display: grid;
+  grid-template-columns: 80px 120px 1fr 220px; 
+  align-items: center;
+  padding: 3rem 0;
+  gap: 1.5rem;
+}
+
+/* 1. Rank Number */
+.rank-number {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--text-muted);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--text-main);
+  line-height: 1;
+  text-align: center;
+  opacity: 0.15;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.song-card-container:hover .rank-number {
+  opacity: 1;
+  transform: scale(1.1) translateX(5px);
+}
+
+/* 2. Visuals */
+.song-card__visuals {
+  width: 120px;
+  height: 120px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.album-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-art-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  color: #ccc;
+}
+
+/* 3. Info Section */
+.song-card__info {
+  display: flex;
+  flex-direction: column;
 }
 
 .song-card__title {
   font-family: var(--font-serif);
-  font-size: 1.75rem;
-  margin-bottom: 0.25rem;
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-main);
+  line-height: 1.1;
 }
 
 .song-card__artist {
-  color: var(--text-muted);
-  font-size: 1rem;
-}
-
-.song-card__play {
-  width: 50px;
-  height: 50px;
-  border: 1px solid var(--text-main);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-main);
-  transition: all 0.3s;
-}
-
-.song-card__play:hover {
-  background: var(--text-main);
-  color: white;
-}
-
-/* ==========================================================================
-   CURATION LOGIC - FULLY DYNAMIC HEIGHT
-   ========================================================================== */
-.explanations {
-  padding: 6rem 1.5rem;
-  background: #fdfcfb;
-  display: block;
-  height: auto;
-  min-height: 200px;
-  overflow: visible;
-}
-
-.explanations .results__container {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  height: auto;
-  overflow: visible;
-}
-
-/* ==========================================================================
-   MOODLING MASCOT & AVATAR
-   ========================================================================== */
-.moodling-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-right: 2.5rem;
-  width: auto;
-  height: auto;
-  margin-top: 0.5rem; /* 微調以對齊標題第一行 */
-}
-
-.explanation-card {
-  margin-bottom: 4rem;
-  padding: 3rem;
-  border: 1px solid var(--border-color);
-  background: #ffffff;
-  display: flex;
-  align-items: flex-start; /* 改為頂部對齊 */
-}
-
-.explanation-content {
-  flex: 1;
-}
-
-/* ==========================================================================
-   ANALYTICS SYNC
-   ========================================================================== */
-.analytics-hero {
-  padding: 4rem 1.5rem;
-  text-align: center;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: var(--container-width);
-  margin: 0 auto;
-}
-
-.stat-card {
-  background: white;
-  padding: 2.5rem;
-  border: 1px solid var(--border-color);
-  text-align: center;
-}
-
-.stat-card__value {
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
-}
-
-.stat-card__title {
-  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.song-card__details {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
   color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
-.development-notice {
-  margin-top: 4rem;
-  padding: 4rem;
-  background: #fdfcfb;
-  border: 1px dashed var(--border-color);
-  text-align: center;
+/* 4. Interaction Area */
+.song-card__interactions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: 100%;
 }
 
-.tag {
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: var(--text-main);
-  color: white;
-  font-size: 0.8rem;
-  margin: 0.5rem;
+.interaction-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #bbb;
+  margin-bottom: 0.75rem;
 }
 
-/* ==========================================================================
-   FORM ENHANCEMENTS
-   ========================================================================== */
-.slider-container {
+/* Custom Player */
+.custom-audio-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.play-pause-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--text-main);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.audio-progress-container {
+  flex: 1;
+  height: 4px;
+  background: #eee;
   position: relative;
-  padding-bottom: 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
+.audio-progress-bar {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  background: var(--text-main);
+  width: 0%;
+  border-radius: 4px;
+}
+
+.hidden-audio { display: none; }
+
+.song-card__actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.action-btn-link, .modern-why {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-main);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.action-btn-link { background: var(--text-main); color: white; }
+.action-btn-link:hover { background: transparent; color: var(--text-main); }
+.modern-why { background: transparent; color: var(--text-main); }
+.modern-why:hover { background: var(--text-main); color: white; }
+
+/* Explanation Drawer - Chat Style */
+.explanation-details summary { list-style: none; cursor: pointer; outline: none; }
+.explanation-details summary::-webkit-details-marker { display: none; }
+
+.explanation-drawer {
+  background: #fdfcfb;
+  border-top: 1px solid #f0f0f0;
+  padding: 3rem 0;
+}
+
+.chat-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.moodling-mascot {
+  width: 80px; 
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.speech-bubble {
+  flex: 1;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e5e0d8;
+  border-radius: 18px;
+  border-bottom-left-radius: 2px;
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -12px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-left: 1px solid #e5e0d8;
+  border-bottom: 1px solid #e5e0d8;
+  transform: skewX(45deg);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.explanation-text {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* Slider Hints */
+.slider-container { margin-top: 1rem; }
 .slider-hints {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.75rem;
-  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-/* ==========================================================================
-   WHY BUTTON & TOGGLE
-   ========================================================================== */
-.why-button {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  border: 1px solid var(--text-main);
-  background: transparent;
-  color: var(--text-main);
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.why-button:hover {
-  background: var(--text-main);
-  color: white;
-}
-
-.explanation-wrapper {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #fdfcfb;
-}
-
-.explanation-wrapper.open {
-  max-height: 1000px; /* 充分的高度以容納長文本 */
-  margin-top: 2rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 3rem;
-}
-
-.clear-all-btn {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: #ff4d4d;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-}
-
-.clear-all-btn:hover {
-  border-bottom-color: #ff4d4d;
-}
-
-.delete-item-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: color 0.3s;
-}
-
-.delete-item-btn:hover {
-  color: #ff4d4d;
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.footer {
-  padding: 4rem 0;
-  text-align: center;
-  border-top: 1px solid var(--border-color);
-}
-
-.footer__container {
-  max-width: var(--container-width);
-  margin: 0 auto;
-}
+/* Footer */
+.footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border-color); }
 
 /* Mobile */
-@media (max-width: 768px) {
-  .song-card {
-    grid-template-columns: 50px 1fr;
-  }
-  .song-card__play {
-    grid-column: 2;
-    margin-top: 1rem;
-  }
+@media (max-width: 900px) {
+  .song-rank-row { grid-template-columns: 50px 80px 1fr 120px; gap: 1rem; }
+  .chat-container { padding: 0 1rem; }
+  .song-card__audio-wrapper { display: none; }
 }
